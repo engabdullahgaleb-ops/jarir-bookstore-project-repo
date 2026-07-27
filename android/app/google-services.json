@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "544310810780",
+    "project_id": "jarir-bookstore-project",
+    "storage_bucket": "jarir-bookstore-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544310810780:android:a3ce97e13bd7dc1738f559",
+        "android_client_info": {
+          "package_name": "com.example.jarir_bookstore_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBga3lT1S6VbV7Sqoz0bH6wRkCCUmOsQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

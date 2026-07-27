@@ -1,0 +1,11 @@
+{
+    "appName":"Jarir BookStore",
+    "welcome":"Welcome",
+    "chooseCity": "Choose City",
+    "chooseDelivery": "Choose Delivery Method",
+    "pickupFromJariStore": "Pickup from Store",
+    "deliveryToMyLocation": "Delivery to Location",
+    "toBeSearched": "What do you want to search ?"
+
+
+}
