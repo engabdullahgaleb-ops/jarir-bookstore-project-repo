@@ -18,4 +18,14 @@ class ThemeCubit extends Cubit<Brightness> {
     });
 
   }
+  void changeMode(Brightness mode){
+    ThemeModeHelper.saveCurrentThemeMode(mode
+    ).then((value){
+      emit(mode);
+    }).catchError((error){
+      if (kDebugMode) {
+        print(error.toString());
+      }
+    });
+  }
 }

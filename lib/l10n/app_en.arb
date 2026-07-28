@@ -24,7 +24,14 @@
     "customCare": "Custom Care",
     "support": "Support",
     "jarirServices": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "chooseTheme":"Please Choose Theme Mode",
+    "lightMode":"Light Mode",
+    "darkMode":"Dark Mode",
+    "chooseLang":"Please Choose Preferred Language ",
+    "arLang":"Arabic",
+    "enLang":"English"
+
 
 
 

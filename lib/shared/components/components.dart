@@ -12,10 +12,10 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
 //button with title and icon
-Widget iconTitleButton({required Icon icon, required String title,required BuildContext context,Function ? onPressed }){
+Widget iconTitleButton({required Icon icon, required String title,required BuildContext context, onPressed }){
   return MaterialButton(
     padding: EdgeInsets.symmetric(horizontal: 2),
-    onPressed: (){},
+    onPressed: onPressed,
     shape: RoundedRectangleBorder(
       side:BorderSide(color: AppColors.primary),
       borderRadius: BorderRadius.all(Radius.circular(7)),
@@ -313,7 +313,7 @@ Widget buildLoginCard(BuildContext context) {
   return Container(
     padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: getSurfaceColor(context),
       borderRadius: BorderRadius.circular(20),
     ),
     child: Column(
@@ -362,7 +362,7 @@ Widget buildLoginCard(BuildContext context) {
 
 
 //tile widget
-Widget buildTile({required IconData icon, required String title, Widget? trailing,}) {
+Widget buildTile({required BuildContext context,required IconData icon, required String title, Widget? trailing,}) {
   return Container(
     margin: const EdgeInsets.only(bottom: 16),
     padding: const EdgeInsets.symmetric(
@@ -370,7 +370,7 @@ Widget buildTile({required IconData icon, required String title, Widget? trailin
       vertical: 18,
     ),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: getSurfaceColor(context),
       borderRadius: BorderRadius.circular(18),
     ),
     child: Row(

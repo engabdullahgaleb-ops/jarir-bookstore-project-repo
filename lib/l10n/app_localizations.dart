@@ -253,6 +253,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Theme'**
   String get theme;
+
+  /// No description provided for @chooseTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Choose Theme Mode'**
+  String get chooseTheme;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get lightMode;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @chooseLang.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Choose Preferred Language '**
+  String get chooseLang;
+
+  /// No description provided for @arLang.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arLang;
+
+  /// No description provided for @enLang.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get enLang;
 }
 
 class _AppLocalizationsDelegate
