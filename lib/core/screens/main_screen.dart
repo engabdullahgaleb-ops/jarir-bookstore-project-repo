@@ -1,127 +1,45 @@
-import 'package:carousel_slider/carousel_controller.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/Screens/home_screen.dart';
 import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
-import 'package:jarir_bookstore_project/core/cubits/remote_data_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/theme_cubit.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/data/mock_data.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
-import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:jarir_bookstore_project/shared/helpers/locale_helper.dart';
-import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
- final PageController pageController = PageController();
- final CarouselSliderController carouselSliderController = CarouselSliderController();
   @override
   Widget build(BuildContext context) {
    return
-     Scaffold(
-        //app bar
-        appBar: getAppBar(context) as AppBar,
+     BlocProvider<NavigationBarCubit>(
+       create: (context)=>NavigationBarCubit(),
+       child: BlocBuilder<NavigationBarCubit,int>(
+       builder:(context,state)=>  Scaffold(
+          //app bar
+          appBar: buildAppBar(context) as AppBar,
 
-        //bottom navigation bar with bloc provider
-        bottomNavigationBar: BlocProvider(
-          create: (context)=>NavigationBarCubit(),
-          child: BlocBuilder<NavigationBarCubit,int>(
-            builder:(context,state)=> AppNavigationBar(
-                context: context,
-                currentIndex: context.watch<NavigationBarCubit>().state,
-                onTap: (index){
-                  context.read<NavigationBarCubit>().changeCurrentItem(index);
-                  navigateTo(from: context , to : NavigationBarCubit.getNavScreens()[index]);
-                },
-                itemsData:NavigationBarCubit.buildNavItemsData(context)
-            ),
+          //bottom navigation
+          bottomNavigationBar:AppNavigationBar(
+            context: context,
+            currentIndex: context.watch<NavigationBarCubit>().state,
+            onTap: (index){
+              context.read<NavigationBarCubit>().changeCurrentItem(index);
+            },
+            itemsData:NavigationBarCubit.buildNavItemsData(context)
           ),
-        ),
-
-       //body
-       body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                SizedBox(height: 5,),
-                //search bar
-                inputField(context: context,prefix: Icons.search,suffix: Icons.qr_code,type: TextInputType.webSearch,hint: AppLocalizations.of(context)!.toBeSearched),
-                SizedBox(height: 10,),
-                boundaryLine(),
-                SizedBox(height: 15,),
-
-                //categories
-                SizedBox(
-                  height: 150,
-                  child: horizontalListView(
-                    count: context.watch<RemoteDataCubit>().state is RemoteDataLoaded?(context.read<RemoteDataCubit>().state as RemoteDataLoaded ).categories.length:10,
-                    itemBuilder: (BuildContext context, index) {
-                      return  SizedBox(
-                        width:150,
-                        child: ConditionalBuilder(
-                          condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
-                          builder:((context){
-                           RemoteDataLoaded result = (context.read<RemoteDataCubit>().state as RemoteDataLoaded );
-                            return cardItem(
-                              color: RandomColorsHelper.random(context),
-                              context: context,
-                              imageUrl: result.categories[index].imageUrl,
-                              title: context.watch<LocaleCubit>().isArabic()?result.categories[index].title['ar']!:result.categories[index].title['en']!,
-                          );}),
-                          fallback:((error)=> emptyCardItem(context)) ,
-                        )
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(height: 15,),
-
-                //banners slider
-                SizedBox(
-                  height: 200,
-                  child: ConditionalBuilder(
-                    condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
-                    builder: ((value){
-                      RemoteDataLoaded result = context.read<RemoteDataCubit>().state as RemoteDataLoaded;
-                      return Column(
-                        children: [
-                          Expanded(
-                            child: PageView.builder(
-                                controller: pageController, itemCount:result.banners.length,itemBuilder: (context,index) {
-                              return ClipRRect(
-                                  borderRadius: BorderRadius.circular(16),
-                                  child: AppNetworkImage(url: result.banners[index].imageUrl)
-                              );
-                            }),
-                          ),
-                          SizedBox(height: 8,),
-                          smoothPageIndicator(controller: pageController,
-                              count: result.banners.length)
-                        ],
-                      );
-                    }),
-                    fallback:((error){
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      ) ;
-                    })
-                  ),
-                ),
-              ],
-            ),
-          )
-        )
-     );
-
+         //body
+         body: NavigationBarCubit.getNavScreens()[context.read<NavigationBarCubit>().state]
+       ),
+     ));
   }
 
   //app bar
-  Widget getAppBar(BuildContext context){
+  Widget buildAppBar(BuildContext context){
     return AppBar(
       title: Padding(
         padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 5),
@@ -193,7 +111,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              getModalBottomSheetAppBar(context),
+              buildModalBottomSheetAppBar(context),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
@@ -221,7 +139,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   // appbar inside bottom sheet
-  AppBar getModalBottomSheetAppBar(BuildContext context){
+  AppBar buildModalBottomSheetAppBar(BuildContext context){
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0, leading: IconButton(icon:Icon(Icons.arrow_back_ios_sharp), onPressed: () {

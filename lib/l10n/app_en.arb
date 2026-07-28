@@ -10,7 +10,6 @@
     "category":"Category",
     "stores": "Stores",
     "cart": "Cart",
-    "account": "Account"
-
-
+    "account": "Account",
+    "shoppingByCategory": "تسوق بالاقسام"
 }

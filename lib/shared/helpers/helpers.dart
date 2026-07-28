@@ -16,3 +16,9 @@ Color getSurfaceColor (BuildContext context){
   return Theme.of(context).colorScheme.surface;
 }
 
+
+Future<void> navigateTo({required BuildContext from , required Widget to}){
+  return Navigator.push(from, MaterialPageRoute(
+    builder: (context)=>to
+  ));
+}

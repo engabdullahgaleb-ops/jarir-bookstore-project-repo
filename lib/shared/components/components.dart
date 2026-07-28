@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jarir_bookstore_project/core/cubits/bottom_navigation_cubit.dart';
+import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
@@ -193,8 +193,8 @@ Widget brokenImage(){
 }
 
 //bottom navigation bar
-class AppBottomNavigationBar extends StatelessWidget {
-  const AppBottomNavigationBar({
+class AppNavigationBar extends StatelessWidget {
+  const AppNavigationBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
@@ -203,7 +203,7 @@ class AppBottomNavigationBar extends StatelessWidget {
   });
 
   final BuildContext context ;
-  final List<BottomNavItem> itemsData;
+  final List<NavItem> itemsData;
   final int currentIndex;
   final ValueChanged<int> onTap;
 
@@ -228,7 +228,7 @@ class AppBottomNavigationBar extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: context.watch<BottomNavigationCubit>().state == index
+                    color: context.watch<NavigationBarCubit>().state == index
                         ? AppColors.primary
                         : Colors.transparent,
                     width: 3,

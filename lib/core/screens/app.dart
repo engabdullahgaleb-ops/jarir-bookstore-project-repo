@@ -22,12 +22,12 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<AppCubit>(
             create: (context)=> AppCubit()),
-        BlocProvider(
+        BlocProvider<LocaleCubit>(
           create: (context) => LocaleCubit(LocaleHelper.getCurrentLocale()),
         ),
-        BlocProvider(create: (context)=>ThemeCubit(ThemeModeHelper.getCurrentThemeMode())),
+        BlocProvider<ThemeCubit>(create: (context)=>ThemeCubit(ThemeModeHelper.getCurrentThemeMode())),
 
-        BlocProvider(
+        BlocProvider<RemoteDataCubit>(
           create: (_) => RemoteDataCubit(
             repository: FirestoreRepository(
             ),

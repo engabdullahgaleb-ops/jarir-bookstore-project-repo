@@ -1,22 +1,37 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:jarir_bookstore_project/core/Screens/home_screen.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
+import 'package:jarir_bookstore_project/core/screens/account_screen.dart';
+import 'package:jarir_bookstore_project/core/screens/cart_screen.dart';
+import 'package:jarir_bookstore_project/core/screens/categories_screen.dart';
+import 'package:jarir_bookstore_project/core/screens/stores_screen.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 
-class BottomNavigationCubit extends Cubit<int>{
-  BottomNavigationCubit():super(0);
+class NavigationBarCubit extends Cubit<int>{
+  NavigationBarCubit():super(0);
 
   void changeCurrentItem(int index){
     emit(index);
   }
 
-  static List<BottomNavItem> buildBottomNavItemsData(BuildContext context){
+  static List<NavItem> buildNavItemsData(BuildContext context){
     return [
-      BottomNavItem(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: AppLocalizations.of(context)!.home),
-      BottomNavItem(icon: Icon(Icons.grid_view_outlined), selectedIcon: Icon(Icons.grid_view_rounded), label: AppLocalizations.of(context)!.category),
-      BottomNavItem(icon: Icon(Icons.storefront_outlined), selectedIcon: Icon(Icons.storefront_rounded), label: AppLocalizations.of(context)!.stores),
-      BottomNavItem(icon: Icon(Icons.shopping_cart_outlined), selectedIcon: Icon(Icons.shopping_cart), label: AppLocalizations.of(context)!.cart),
-      BottomNavItem(icon: Icon(Icons.account_circle_outlined), selectedIcon: Icon(Icons.account_circle), label: AppLocalizations.of(context)!.account),
+      NavItem(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: AppLocalizations.of(context)!.home),
+      NavItem(icon: Icon(Icons.grid_view_outlined), selectedIcon: Icon(Icons.grid_view_rounded), label: AppLocalizations.of(context)!.category),
+      NavItem(icon: Icon(Icons.storefront_outlined), selectedIcon: Icon(Icons.storefront_rounded), label: AppLocalizations.of(context)!.stores),
+      NavItem(icon: Icon(Icons.shopping_cart_outlined), selectedIcon: Icon(Icons.shopping_cart), label: AppLocalizations.of(context)!.cart),
+      NavItem(icon: Icon(Icons.account_circle_outlined), selectedIcon: Icon(Icons.account_circle), label: AppLocalizations.of(context)!.account),
+    ];
+  }
+
+  static List<Widget> getNavScreens(){
+    return [
+      HomeScreen(),
+      CategoriesScreen(),
+      StoresScreen(),
+      CartScreen(),
+      AccountScreen()
     ];
   }
 }

@@ -169,6 +169,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account'**
   String get account;
+
+  /// No description provided for @shoppingByCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'تسوق بالاقسام'**
+  String get shoppingByCategory;
 }
 
 class _AppLocalizationsDelegate
