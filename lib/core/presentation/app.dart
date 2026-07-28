@@ -1,7 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jarir_bookstore_project/core/Screens/splash_screen.dart';
+import 'package:jarir_bookstore_project/core/presentation/Screens/splash_screen.dart';
 import 'package:jarir_bookstore_project/core/cubits/app_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/remote_data_cubit.dart';

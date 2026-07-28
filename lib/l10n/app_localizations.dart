@@ -173,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @shoppingByCategory.
   ///
   /// In en, this message translates to:
-  /// **'تسوق بالاقسام'**
+  /// **'Shop By Category'**
   String get shoppingByCategory;
 }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jarir_bookstore_project/core/screens/main_screen.dart';
+import 'package:jarir_bookstore_project/core/presentation/screens/main_screen.dart';
 import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 
 class SplashScreen extends StatelessWidget{

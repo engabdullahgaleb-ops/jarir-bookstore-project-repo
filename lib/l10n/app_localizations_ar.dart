@@ -46,5 +46,5 @@ class AppLocalizationsAr extends AppLocalizations {
   String get account => 'الحساب';
 
   @override
-  String get shoppingByCategory => 'Shop By Category';
+  String get shoppingByCategory => 'تسوق بالاقسام';
 }

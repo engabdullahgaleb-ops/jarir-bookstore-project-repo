@@ -1,17 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:jarir_bookstore_project/core/Screens/home_screen.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
-import 'package:jarir_bookstore_project/core/screens/account_screen.dart';
-import 'package:jarir_bookstore_project/core/screens/cart_screen.dart';
-import 'package:jarir_bookstore_project/core/screens/categories_screen.dart';
-import 'package:jarir_bookstore_project/core/screens/stores_screen.dart';
+import 'package:jarir_bookstore_project/core/presentation/pages/account_page.dart';
+import 'package:jarir_bookstore_project/core/presentation/pages/cart_page.dart';
+import 'package:jarir_bookstore_project/core/presentation/pages/categories_page.dart';
+import 'package:jarir_bookstore_project/core/presentation/pages/home_page.dart';
+import 'package:jarir_bookstore_project/core/presentation/pages/stores_page.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 
 class NavigationBarCubit extends Cubit<int>{
   NavigationBarCubit():super(0);
 
-  void changeCurrentItem(int index){
+  void changePage(int index){
     emit(index);
   }
 
@@ -25,13 +25,13 @@ class NavigationBarCubit extends Cubit<int>{
     ];
   }
 
-  static List<Widget> getNavScreens(){
+  static List<Widget> getPages(){
     return [
-      HomeScreen(),
-      CategoriesScreen(),
-      StoresScreen(),
-      CartScreen(),
-      AccountScreen()
+      HomePage(),
+      CategoriesPage(),
+      StoresPage(),
+      CartPage(),
+      AccountPage()
     ];
   }
 }

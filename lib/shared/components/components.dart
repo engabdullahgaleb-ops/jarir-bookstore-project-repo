@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
+import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -44,7 +46,7 @@ Widget boundaryLine(){
   return Container(
     width: double.infinity,
     height: 0.5,
-    color: AppColors.grey500,
+    color: AppColors.grey300,
   );
 }
 
@@ -74,7 +76,7 @@ Widget cardItem({ BuildContext ? context ,required String imageUrl, required Str
             ),
             SizedBox(height: 15,),
             Text(title,textAlign: TextAlign.center,maxLines: 2,overflow: TextOverflow.ellipsis,style: context!=null?Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ):TextStyle()),
           ],
         ),
@@ -246,4 +248,61 @@ class AppNavigationBar extends StatelessWidget {
       ),
     );
   }
+}
+
+//slider fade animation
+Widget slideFadeSwitcher({
+    required Key key,
+    required Widget child,
+    Duration duration = const Duration(milliseconds: 300),
+  }) {
+    return AnimatedSwitcher(
+      duration: duration,
+      transitionBuilder: (child, animation) {
+        final slideAnimation = Tween<Offset>(
+          begin: const Offset(0.15, 0),
+          end: Offset.zero,
+        ).animate(
+          CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeInOut,
+          ),
+        );
+        return SlideTransition(
+          position: slideAnimation,
+          child: FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        );
+      },
+      child: KeyedSubtree(
+        key: key,
+        child: child,
+      ),
+    );
+  }
+
+//build grid view
+Widget buildGridView(List items, {required BuildContext context, int crossAxisCount = 2}) {
+  return GridView.builder(
+    padding: const EdgeInsets.all(16),
+    itemCount: items.length,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: crossAxisCount,
+      crossAxisSpacing: 16,
+      mainAxisSpacing: 16,
+      childAspectRatio: 1/1.3,
+    ),
+    itemBuilder: (context, index) {
+      final item = items[index];
+      return SizedBox(
+        child: cardItem(
+          context: context,
+          imageUrl: item.imageUrl,
+          title:  context.watch<LocaleCubit>().isArabic()?item.title['ar']!:item.title['en']!,
+          color: RandomColorsHelper.random(context)),
+      );
+    },
+  );
 }

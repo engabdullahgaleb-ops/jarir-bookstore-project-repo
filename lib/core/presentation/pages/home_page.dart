@@ -8,8 +8,8 @@ import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
 import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
   final PageController pageController = PageController();
   final CarouselSliderController carouselSliderController = CarouselSliderController();

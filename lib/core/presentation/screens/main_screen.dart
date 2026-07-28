@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jarir_bookstore_project/core/Screens/home_screen.dart';
 import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/theme_cubit.dart';
@@ -21,20 +20,23 @@ class MainScreen extends StatelessWidget {
        child: BlocBuilder<NavigationBarCubit,int>(
        builder:(context,state)=>  Scaffold(
           //app bar
-          appBar: buildAppBar(context) as AppBar,
+          appBar: state == 0 ? buildAppBar(context) as AppBar:null,
 
           //bottom navigation
           bottomNavigationBar:AppNavigationBar(
             context: context,
             currentIndex: context.watch<NavigationBarCubit>().state,
             onTap: (index){
-              context.read<NavigationBarCubit>().changeCurrentItem(index);
+              context.read<NavigationBarCubit>().changePage(index);
             },
             itemsData:NavigationBarCubit.buildNavItemsData(context)
           ),
          //body
-         body: NavigationBarCubit.getNavScreens()[context.read<NavigationBarCubit>().state]
+         body: slideFadeSwitcher(
+           key: ValueKey(state),
+         child: NavigationBarCubit.getPages()[state],
        ),
+      ),
      ));
   }
 
