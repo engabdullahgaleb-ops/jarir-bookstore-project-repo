@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 
 class RandomColorsHelper {
   RandomColorsHelper._();
@@ -26,17 +27,9 @@ class RandomColorsHelper {
     final color = _lightPalette[_random.nextInt(_lightPalette.length)];
 
     if (Theme.of(context).brightness == Brightness.dark) {
-      return _darken(color);
+      return darken(color);
     }
 
     return color;
-  }
-
-  static Color _darken(Color color, [double amount = 0.45]) {
-    final hsl = HSLColor.fromColor(color);
-
-    return hsl
-        .withLightness((hsl.lightness - amount).clamp(0.0, 1.0))
-        .toColor();
   }
 }

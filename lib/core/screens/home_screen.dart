@@ -11,7 +11,6 @@ import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
 import 'package:jarir_bookstore_project/shared/helpers/locale_helper.dart';
 import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
-import 'package:jarir_bookstore_project/shared/helpers/theme_mode_helper.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -49,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                             imageUrl: result.categories[index].imageUrl,
                             title: context.watch<LocaleCubit>().isArabic()?result.categories[index].title['ar']!:result.categories[index].title['en']!,
                         );}),
-                        fallback:((error)=> emptyCardItem()) ,
+                        fallback:((error)=> emptyCardItem(context)) ,
                       )
                     );
                   },
@@ -69,11 +68,7 @@ class HomeScreen extends StatelessWidget {
                               controller: pageController, itemCount:result.banners.length,itemBuilder: (context,index) {
                             return ClipRRect(
                                 borderRadius: BorderRadius.circular(16),
-                                child: Image(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        result.banners[index].imageUrl
-                                    ))
+                                child: AppNetworkImage(url: result.banners[index].imageUrl)
                             );
                           }),
                         ),

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
+import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -61,9 +62,7 @@ Widget cardItem({ BuildContext ? context ,required String imageUrl, required Str
               backgroundColor: Colors.white,
               child:Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image(
-                  image: NetworkImage(imageUrl),
-                ),
+                child: AppNetworkImage(url: imageUrl),
               ),
             ),
             SizedBox(height: 15,),
@@ -77,9 +76,9 @@ Widget cardItem({ BuildContext ? context ,required String imageUrl, required Str
   );
 }
 
-Widget emptyCardItem(){
+Widget emptyCardItem(context){
   return Card(
-    color: AppColors.grey300,
+    color: getSurfaceColor(context),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
     ),
@@ -133,4 +132,55 @@ Widget carouselSlider({required CarouselSliderController  controller,required it
       options: CarouselOptions(
     autoPlay:true,
   ), items: items,);
+}
+
+
+class AppNetworkImage extends StatelessWidget {
+  const AppNetworkImage({
+    super.key,
+    required this.url,
+    this.width,
+    this.height,
+    this.fit = BoxFit.cover,
+    this.borderRadius = 12,
+  });
+
+  final String url;
+  final double? width;
+  final double? height;
+  final BoxFit fit;
+  final double borderRadius;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: Image.network(
+        url,
+        width: width,
+        height: height,
+        fit: fit,
+        loadingBuilder: (context, child, progress) {
+          if (progress == null) return child;
+
+          return Center(
+            child: CircularProgressIndicator(
+              value: progress.expectedTotalBytes != null
+                  ? progress.cumulativeBytesLoaded /
+                  progress.expectedTotalBytes!
+                  : null,
+            ),
+          );
+        },
+        errorBuilder: (_, __, ___) => brokenImage(),
+      ),
+    );
+  }
+}
+Widget brokenImage(){
+  return Container(
+    color: Colors.grey.shade200,
+    alignment: Alignment.center,
+    child: const Icon(Icons.broken_image),
+  );
 }
