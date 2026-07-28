@@ -6,7 +6,6 @@ class AppButtonTheme {
 
   static ElevatedButtonThemeData light =
   ElevatedButtonThemeData(
-
     style: ElevatedButton.styleFrom(
 
       backgroundColor: AppColors.primary,

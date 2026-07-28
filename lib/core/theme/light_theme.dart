@@ -39,7 +39,7 @@ class LightTheme {
     inputDecorationTheme:
     AppInputTheme.light,
 
-    bottomNavigationBarTheme:
+    navigationBarTheme:
     AppBottomNavTheme.light,
   );
 }

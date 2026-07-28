@@ -31,17 +31,12 @@ class HomeScreen extends StatelessWidget {
           create: (context)=>BottomNavigationCubit(),
           child: BlocBuilder<BottomNavigationCubit,int>(
             builder:(context,state)=> AppBottomNavigationBar(
+                context: context,
                 currentIndex: context.watch<BottomNavigationCubit>().state,
                 onTap: (index){
                   context.read<BottomNavigationCubit>().changeCurrentItem(index);
                 },
-                itemsData: [
-                  BottomNavItem(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: AppLocalizations.of(context)!.home),
-                  BottomNavItem(icon: Icon(Icons.grid_view_outlined), selectedIcon: Icon(Icons.grid_view_rounded), label: AppLocalizations.of(context)!.category),
-                  BottomNavItem(icon: Icon(Icons.storefront_outlined), selectedIcon: Icon(Icons.storefront_rounded), label: AppLocalizations.of(context)!.stores),
-                  BottomNavItem(icon: Icon(Icons.shopping_cart_outlined), selectedIcon: Icon(Icons.shopping_cart), label: AppLocalizations.of(context)!.cart),
-                  BottomNavItem(icon: Icon(Icons.account_circle_outlined), selectedIcon: Icon(Icons.account_circle), label: AppLocalizations.of(context)!.account),
-                ]
+                itemsData:BottomNavigationCubit.buildBottomNavItemsData(context)
             ),
           ),
         ),
@@ -53,17 +48,20 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 5,),
+                //search bar
                 inputField(context: context,prefix: Icons.search,suffix: Icons.qr_code,type: TextInputType.webSearch,hint: AppLocalizations.of(context)!.toBeSearched),
                 SizedBox(height: 10,),
                 boundaryLine(),
                 SizedBox(height: 15,),
+
+                //categories
                 SizedBox(
-                  height: 140,
+                  height: 150,
                   child: horizontalListView(
                     count: context.watch<RemoteDataCubit>().state is RemoteDataLoaded?(context.read<RemoteDataCubit>().state as RemoteDataLoaded ).categories.length:10,
                     itemBuilder: (BuildContext context, index) {
                       return  SizedBox(
-                        width:140,
+                        width:150,
                         child: ConditionalBuilder(
                           condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
                           builder:((context){
@@ -81,6 +79,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15,),
+
+                //banners slider
                 SizedBox(
                   height: 200,
                   child: ConditionalBuilder(

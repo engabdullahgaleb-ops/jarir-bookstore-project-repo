@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jarir_bookstore_project/core/theme/app_bottom_nav_bar_theme.dart';
 
 import 'app_button_theme.dart';
 import 'app_colors.dart';
@@ -43,5 +44,6 @@ class DarkTheme {
 
       fillColor: AppColors.darkSurface,
     ),
+    navigationBarTheme: AppBottomNavTheme.dark
   );
 }

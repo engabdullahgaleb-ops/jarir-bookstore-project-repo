@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/cubits/bottom_navigation_cubit.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
@@ -59,11 +61,15 @@ Widget cardItem({ BuildContext ? context ,required String imageUrl, required Str
       child: Center(
         child: Column(
           children: [
-            CircleAvatar(
-              backgroundColor: Colors.white,
-              child:Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AppNetworkImage(url: imageUrl),
+            SizedBox(
+              width: 50,
+              height: 50,
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child:Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AppNetworkImage(url: imageUrl,),
+                ),
               ),
             ),
             SizedBox(height: 15,),
@@ -77,7 +83,7 @@ Widget cardItem({ BuildContext ? context ,required String imageUrl, required Str
   );
 }
 
-Widget emptyCardItem(context){
+Widget emptyCardItem(BuildContext context){
   return Card(
     color: getSurfaceColor(context),
     shape: RoundedRectangleBorder(
@@ -173,12 +179,12 @@ class AppNetworkImage extends StatelessWidget {
             ),
           );
         },
-        errorBuilder: (_, __, ___) => AppProkenImage(),
+        errorBuilder: (_, __, ___) => brokenImage(),
       ),
     );
   }
 }
-Widget AppProkenImage(){
+Widget brokenImage(){
   return Container(
     color: Colors.grey.shade200,
     alignment: Alignment.center,
@@ -192,9 +198,11 @@ class AppBottomNavigationBar extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.onTap,
-    required this.itemsData
+    required this.itemsData,
+    required this.context,
   });
 
+  final BuildContext context ;
   final List<BottomNavItem> itemsData;
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -213,13 +221,26 @@ class AppBottomNavigationBar extends StatelessWidget {
       ),
       child: NavigationBar(
         selectedIndex: currentIndex,
+        indicatorColor: Colors.transparent,
         onDestinationSelected: onTap,
         destinations: List.generate(itemsData.length, ((index) =>
-            NavigationDestination(
-              tooltip: itemsData[index].label,
-              icon: itemsData[index].icon,
-              selectedIcon: itemsData[index].selectedIcon,
-              label: itemsData[index].label,
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: context.watch<BottomNavigationCubit>().state == index
+                        ? AppColors.primary
+                        : Colors.transparent,
+                    width: 3,
+                  ),
+                ),
+              ),
+              child: NavigationDestination(
+                tooltip: itemsData[index].label,
+                icon: itemsData[index].icon,
+                selectedIcon: itemsData[index].selectedIcon,
+                label: itemsData[index].label,
+              ),
             )
         ))
       ),
