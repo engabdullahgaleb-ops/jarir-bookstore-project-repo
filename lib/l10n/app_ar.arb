@@ -5,7 +5,12 @@
     "chooseDelivery": "حدد خيار التوصيل المفضل",
     "pickupFromJariStore": "الاستلام من معرض جرير",
     "deliveryToMyLocation": "التوصيل الى موقعي",
-    "toBeSearched": "ما الذي تود البحث عنه ؟"
+    "toBeSearched": "ما الذي تود البحث عنه ؟",
+    "home": "الرئيسية",
+    "category":"الاقسام",
+    "stores": "معارضنا",
+    "cart": "السلة",
+    "account": "الحساب"
 
 
 }

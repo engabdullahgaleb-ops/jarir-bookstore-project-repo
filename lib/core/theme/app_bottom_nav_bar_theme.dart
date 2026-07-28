@@ -13,6 +13,8 @@ class AppBottomNavTheme {
 
     elevation: 12,
 
+    backgroundColor: Colors.white,
+
     type: BottomNavigationBarType.fixed,
   );
 }

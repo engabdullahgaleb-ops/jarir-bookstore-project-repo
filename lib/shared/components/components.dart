@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -172,15 +173,56 @@ class AppNetworkImage extends StatelessWidget {
             ),
           );
         },
-        errorBuilder: (_, __, ___) => brokenImage(),
+        errorBuilder: (_, __, ___) => AppProkenImage(),
       ),
     );
   }
 }
-Widget brokenImage(){
+Widget AppProkenImage(){
   return Container(
     color: Colors.grey.shade200,
     alignment: Alignment.center,
     child: const Icon(Icons.broken_image),
   );
+}
+
+//bottom navigation bar
+class AppBottomNavigationBar extends StatelessWidget {
+  const AppBottomNavigationBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+    required this.itemsData
+  });
+
+  final List<BottomNavItem> itemsData;
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 12,
+            offset: Offset(0, -2),
+          ),
+        ],
+      ),
+      child: NavigationBar(
+        selectedIndex: currentIndex,
+        onDestinationSelected: onTap,
+        destinations: List.generate(itemsData.length, ((index) =>
+            NavigationDestination(
+              tooltip: itemsData[index].label,
+              icon: itemsData[index].icon,
+              selectedIcon: itemsData[index].selectedIcon,
+              label: itemsData[index].label,
+            )
+        ))
+      ),
+    );
+  }
 }

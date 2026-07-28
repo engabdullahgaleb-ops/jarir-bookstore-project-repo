@@ -29,4 +29,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get toBeSearched => 'ما الذي تود البحث عنه ؟';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get category => 'الاقسام';
+
+  @override
+  String get stores => 'معارضنا';
+
+  @override
+  String get cart => 'السلة';
+
+  @override
+  String get account => 'الحساب';
 }

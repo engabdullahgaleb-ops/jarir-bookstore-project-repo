@@ -29,4 +29,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toBeSearched => 'What do you want to search ?';
+
+  @override
+  String get home => 'home';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get stores => 'Stores';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get account => 'Account';
 }
