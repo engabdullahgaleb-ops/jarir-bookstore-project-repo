@@ -11,7 +11,22 @@
     "stores": "معارضنا",
     "cart": "السلة",
     "account": "الحساب",
-    "shoppingByCategory": "تسوق بالاقسام"
+    "shoppingByCategory": "تسوق بالاقسام",
+    "cartPage": "صفحة السلة",
+    "storesPage": "صفحة معارضنا",
+    "signInDescription":"اشترك او سجل دخولك للوصول الى حسابك",
+    "signInOrRegister": "تسجيل الدخول / الاشتراك",
+    "language": "اللغة",
+    "myOrders": "طلباتي",
+    "country": "الدولة",
+    "mySpecialOrders": "عروضي الخاصة",
+    "wishList": "قائمة الرغبات",
+    "customCare": "خدمة العملاء",
+    "support": "الدعم",
+    "jarirServices": "خدمات جرير",
+    "theme": "الثيم"
+
+
 
 
 }

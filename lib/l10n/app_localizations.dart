@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
-  /// **'Welcome'**
+  /// **'Welcome To Jarir!'**
   String get welcome;
 
   /// No description provided for @chooseCity.
@@ -175,6 +175,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shop By Category'**
   String get shoppingByCategory;
+
+  /// No description provided for @cartPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart Page'**
+  String get cartPage;
+
+  /// No description provided for @storesPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Stores Page'**
+  String get storesPage;
+
+  /// No description provided for @signInDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in or register to access your account'**
+  String get signInDescription;
+
+  /// No description provided for @signInOrRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in / Register'**
+  String get signInOrRegister;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @country.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get country;
+
+  /// No description provided for @mySpecialOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Special Orders'**
+  String get mySpecialOrders;
+
+  /// No description provided for @wishList.
+  ///
+  /// In en, this message translates to:
+  /// **'WishList'**
+  String get wishList;
+
+  /// No description provided for @customCare.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Care'**
+  String get customCare;
+
+  /// No description provided for @support.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get support;
+
+  /// No description provided for @jarirServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get jarirServices;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
 }
 
 class _AppLocalizationsDelegate

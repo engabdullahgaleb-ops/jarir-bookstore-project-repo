@@ -5,6 +5,7 @@ import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
+import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -306,3 +307,153 @@ Widget buildGridView(List items, {required BuildContext context, int crossAxisCo
     },
   );
 }
+
+//login cart widget
+Widget buildLoginCard(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.all(20),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: Column(
+      children: [
+        Row(
+          children: [
+            const CircleAvatar(
+              radius: 26,
+              child: Icon(Icons.person_outline),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.welcome,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    AppLocalizations.of(context)!.signInDescription,
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+         SizedBox(height: 20),
+        SizedBox(
+          width: double.infinity,
+          height: 56,
+          child: FilledButton.icon(
+            onPressed: () {},
+            icon:  Icon(Icons.login),
+            label:  Text(AppLocalizations.of(context)!.signInOrRegister),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+
+//tile widget
+Widget buildTile({required IconData icon, required String title, Widget? trailing,}) {
+  return Container(
+    margin: const EdgeInsets.only(bottom: 16),
+    padding: const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 18,
+    ),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(18),
+    ),
+    child: Row(
+      children: [
+        Icon(icon, size: 28),
+
+        const SizedBox(width: 18),
+
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+
+        trailing ??
+            const Icon(
+              Icons.chevron_right,
+              size: 30,
+            ),
+      ],
+    ),
+  );
+}
+
+
+//bottom sheet
+Future<String?> showAppBottomSheet({required BuildContext context,required String title, String ?subtitle,required List<Widget> children}){
+  return showModalBottomSheet<String>(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (context)=>
+          SizedBox(
+            height: 200,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildAppModalBottomSheetAppBar(context:context,title: title),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(subtitle??"",style: Theme.of(context).textTheme.titleLarge,),
+                      SizedBox(height: 8,),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: children,
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+  );
+}
+
+// appbar inside bottom sheet
+AppBar buildAppModalBottomSheetAppBar({required BuildContext context,required String title}){
+  return AppBar(
+    backgroundColor: Colors.transparent,
+    elevation: 0, leading: IconButton(icon:Icon(Icons.arrow_back_ios_sharp), onPressed: () {
+
+  },),
+    title: Text(title,style:
+    Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w800,color: AppColors.primary)
+      ,),
+    actions: [
+      IconButton(icon: Icon(Icons.close),
+        onPressed: (){
+          Navigator.pop(context);
+        },
+      )
+    ],
+  );
+
+}
+

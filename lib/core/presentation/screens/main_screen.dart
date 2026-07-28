@@ -61,10 +61,14 @@ class MainScreen extends StatelessWidget {
                     Icon(Icons.location_pin),
                     SizedBox(width: 5,),
                     Expanded(
-                        child: Text(MockData.getLocation(context),style:Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.normal),maxLines: 1,overflow: TextOverflow.ellipsis,)),//to be changed , for demo purposes only
+                        child: Text(MockData.getLocation(context),style:Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w500),maxLines: 1,overflow: TextOverflow.ellipsis,)),//to be changed , for demo purposes only
                     InkWell(
                         onTap: (){
-                          showBottomSheet(context);
+                          showAppBottomSheet(context: context, title: AppLocalizations.of(context)!.chooseCity, subtitle: AppLocalizations.of(context)!.chooseDelivery,children: [
+                            iconTitleButton(icon: Icon(Icons.store_outlined,color: AppColors.primary,), title: AppLocalizations.of(context)!.pickupFromJariStore, context: context),
+                            SizedBox(width: 20,),
+                            iconTitleButton(icon: Icon(Icons.delivery_dining,color: AppColors.primary,), title: AppLocalizations.of(context)!.deliveryToMyLocation, context: context)
+                          ]);
                         },
                         child: Icon(Icons.keyboard_arrow_down)
                     ),
@@ -95,70 +99,6 @@ class MainScreen extends StatelessWidget {
         )
       ],
     );
-  }
-
-  
-  
-  //bottom sheet
-  Future<String?> showBottomSheet(BuildContext context){
-    return showModalBottomSheet<String>(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-        ),
-        isScrollControlled: true,
-        context: context,
-        builder: (context)=>
-            SizedBox(
-          height: 200,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildModalBottomSheetAppBar(context),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(AppLocalizations.of(context)!.chooseDelivery,style: Theme.of(context).textTheme.titleLarge,),
-                    SizedBox(height: 8,),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconTitleButton(icon: Icon(Icons.store_outlined,color: AppColors.primary,), title: AppLocalizations.of(context)!.pickupFromJariStore, context: context),
-                        SizedBox(width: 20,),
-                        iconTitleButton(icon: Icon(Icons.delivery_dining,color: AppColors.primary,), title: AppLocalizations.of(context)!.deliveryToMyLocation, context: context)
-
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        )
-    );
-  }
-
-  // appbar inside bottom sheet
-  AppBar buildModalBottomSheetAppBar(BuildContext context){
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0, leading: IconButton(icon:Icon(Icons.arrow_back_ios_sharp), onPressed: () {
-
-      },),
-      title: Text(AppLocalizations.of(context)!.chooseCity,style:
-      Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w800,color: AppColors.primary)
-        ,),
-      actions: [
-        IconButton(icon: Icon(Icons.close),
-          onPressed: (){
-            Navigator.pop(context);
-          },
-        )
-      ],
-    );
-
   }
 
 }

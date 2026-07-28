@@ -1,6 +1,6 @@
 {
     "appName":"Jarir BookStore",
-    "welcome":"Welcome",
+    "welcome":"Welcome To Jarir!",
     "chooseCity": "Choose City",
     "chooseDelivery": "Choose Delivery Method",
     "pickupFromJariStore": "Pickup from Store",
@@ -11,5 +11,27 @@
     "stores": "Stores",
     "cart": "Cart",
     "account": "Account",
-    "shoppingByCategory": "Shop By Category"
+    "shoppingByCategory": "Shop By Category",
+    "cartPage": "Cart Page",
+    "storesPage": "Stores Page",
+    "signInDescription":"Sign in or register to access your account",
+    "signInOrRegister": "Sign in / Register",
+    "language": "Language",
+    "myOrders": "My Orders",
+    "country": "Country",
+    "mySpecialOrders": "My Special Orders",
+    "wishList": "WishList",
+    "customCare": "Custom Care",
+    "support": "Support",
+    "jarirServices": "Language",
+    "theme": "Theme"
+
+
+
+
+
+
+
+
+
 }

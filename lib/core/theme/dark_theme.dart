@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jarir_bookstore_project/core/theme/app_bottom_nav_bar_theme.dart';
+import 'package:jarir_bookstore_project/core/theme/app_filled_button_theme.dart';
 
 import 'app_button_theme.dart';
 import 'app_colors.dart';
@@ -35,6 +36,8 @@ class DarkTheme {
 
       displayColor: Colors.white,
     ),
+
+    filledButtonTheme: AppFilledButtonTheme.light,
 
     elevatedButtonTheme:
     AppButtonTheme.light,

@@ -47,4 +47,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shoppingByCategory => 'تسوق بالاقسام';
+
+  @override
+  String get cartPage => 'صفحة السلة';
+
+  @override
+  String get storesPage => 'صفحة معارضنا';
+
+  @override
+  String get signInDescription => 'اشترك او سجل دخولك للوصول الى حسابك';
+
+  @override
+  String get signInOrRegister => 'تسجيل الدخول / الاشتراك';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get country => 'الدولة';
+
+  @override
+  String get mySpecialOrders => 'عروضي الخاصة';
+
+  @override
+  String get wishList => 'قائمة الرغبات';
+
+  @override
+  String get customCare => 'خدمة العملاء';
+
+  @override
+  String get support => 'الدعم';
+
+  @override
+  String get jarirServices => 'خدمات جرير';
+
+  @override
+  String get theme => 'الثيم';
 }

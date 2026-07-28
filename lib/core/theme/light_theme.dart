@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jarir_bookstore_project/core/theme/app_filled_button_theme.dart';
 
 import 'app_app_bar_theme.dart';
 import 'app_bottom_nav_bar_theme.dart';
@@ -30,6 +31,8 @@ class LightTheme {
     textTheme: AppTextTheme.light,
 
     appBarTheme: AppAppBarTheme.light,
+
+    filledButtonTheme:AppFilledButtonTheme.light,
 
     elevatedButtonTheme:
     AppButtonTheme.light,

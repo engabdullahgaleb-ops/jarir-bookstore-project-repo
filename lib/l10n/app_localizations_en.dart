@@ -13,7 +13,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'Jarir BookStore';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'Welcome To Jarir!';
 
   @override
   String get chooseCity => 'Choose City';
@@ -47,4 +47,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shoppingByCategory => 'Shop By Category';
+
+  @override
+  String get cartPage => 'Cart Page';
+
+  @override
+  String get storesPage => 'Stores Page';
+
+  @override
+  String get signInDescription => 'Sign in or register to access your account';
+
+  @override
+  String get signInOrRegister => 'Sign in / Register';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get country => 'Country';
+
+  @override
+  String get mySpecialOrders => 'My Special Orders';
+
+  @override
+  String get wishList => 'WishList';
+
+  @override
+  String get customCare => 'Custom Care';
+
+  @override
+  String get support => 'Support';
+
+  @override
+  String get jarirServices => 'Language';
+
+  @override
+  String get theme => 'Theme';
 }
