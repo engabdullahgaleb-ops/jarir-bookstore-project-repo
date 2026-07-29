@@ -370,8 +370,7 @@ Widget buildTile({required BuildContext context,required IconData icon, required
       vertical: 18,
     ),
     decoration: BoxDecoration(
-      color: getSurfaceColor(context),
-      borderRadius: BorderRadius.circular(18),
+       borderRadius: BorderRadius.circular(18),
     ),
     child: Row(
       children: [
