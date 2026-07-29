@@ -89,11 +89,12 @@ Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUr
 
 
 // build card item with only image
-Widget buildImageCardItem({required String imageUrl}){
-  return Container(
-    child: Center(
-      child: AppNetworkImage(url: imageUrl),
-    ),
+Widget buildImageCardItem({required String imageUrl,double ? width,double ? height}){
+  return Card(
+    elevation: 3,
+    shadowColor: AppColors.grey100,
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    child: AppNetworkImage(height:height,width: width,url: imageUrl),
   );
 }
 
@@ -196,15 +197,17 @@ class AppNetworkImage extends StatelessWidget {
             ),
           );
         },
-        errorBuilder: (_, __, ___) => brokenImage(),
+        errorBuilder: (_, __, ___) => brokenImage(width: width,height: height),
       ),
     );
   }
 }
 
 //broken image widget
-Widget brokenImage(){
+Widget brokenImage({double ? width, double ? height}){
   return Container(
+    width: width,
+    height: height,
     color: Colors.grey.shade200,
     alignment: Alignment.center,
     child: const Icon(Icons.broken_image),

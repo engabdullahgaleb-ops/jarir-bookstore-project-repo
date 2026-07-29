@@ -119,8 +119,9 @@ class HomePage extends StatelessWidget {
                   children: [
                     Text(AppLocalizations.of(context)!.shoppingByBrand, style:Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500)),
                     SizedBox(
-                      height: 100,
+                      height: 80,
                       child: horizontalListView(
+                        spacing: 5,
                         count: context.watch<RemoteDataCubit>().state is RemoteDataLoaded?(context.read<RemoteDataCubit>().state as RemoteDataLoaded ).brands.length:10,
                         itemBuilder: (BuildContext context, index) {
                           return  SizedBox(
@@ -129,7 +130,9 @@ class HomePage extends StatelessWidget {
                                 condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
                                 builder:((context){
                                   RemoteDataLoaded result = (context.read<RemoteDataCubit>().state as RemoteDataLoaded );
-                                  return buildImageCardItem(imageUrl: result.brands[index].imageUrl);
+                                  return Tooltip(
+                                      message: context.watch<LocaleCubit>().isArabic()?result.brands[index].title['ar']!:result.brands[index].title['en']!,
+                                      child: buildImageCardItem(width :200,height:60,imageUrl: result.brands[index].imageUrl));
                                   }),
                                 fallback:((error)=> emptyCardItem()) ,
                               )
