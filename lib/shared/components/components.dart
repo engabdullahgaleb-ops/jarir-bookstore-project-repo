@@ -52,7 +52,7 @@ Widget boundaryLine(){
 }
 
 // build card item with image and label
-Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUrl, required String title,Color ? color }){
+Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUrl, required String title,Color ? color ,double width = 50,double height = 50}){
   return Card(
     color: color,
     shape: RoundedRectangleBorder(
@@ -66,8 +66,8 @@ Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUr
         child: Column(
           children: [
             SizedBox(
-              width: 50,
-              height: 50,
+              width: width,
+              height: height,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 child:Padding(
@@ -91,8 +91,10 @@ Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUr
 // build card item with only image
 Widget buildImageCardItem({required String imageUrl,double ? width,double ? height}){
   return Card(
-    elevation: 3,
-    shadowColor: AppColors.grey100,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(5))
+    ),
+    elevation: 2,
     clipBehavior: Clip.antiAliasWithSaveLayer,
     child: AppNetworkImage(height:height,width: width,url: imageUrl),
   );
@@ -272,36 +274,26 @@ class AppNavigationBar extends StatelessWidget {
 
 //slider fade animation
 Widget slideFadeSwitcher({
-    required Key key,
-    required Widget child,
-    Duration duration = const Duration(milliseconds: 300),
-  }) {
-    return AnimatedSwitcher(
-      duration: duration,
-      transitionBuilder: (child, animation) {
-        final slideAnimation = Tween<Offset>(
+  required Widget child,
+  Duration duration = const Duration(milliseconds: 300),
+}) {
+  return AnimatedSwitcher(
+    duration: duration,
+    transitionBuilder: (child, animation) {
+      return SlideTransition(
+        position: Tween<Offset>(
           begin: const Offset(0.15, 0),
           end: Offset.zero,
-        ).animate(
-          CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeInOut,
-          ),
-        );
-        return SlideTransition(
-          position: slideAnimation,
-          child: FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
-        );
-      },
-      child: KeyedSubtree(
-        key: key,
-        child: child,
-      ),
-    );
-  }
+        ).animate(animation),
+        child: FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+      );
+    },
+    child: child,
+  );
+}
 
 //build grid view
 Widget buildGridView(List items, {required BuildContext context, int crossAxisCount = 2}) {
@@ -328,7 +320,7 @@ Widget buildGridView(List items, {required BuildContext context, int crossAxisCo
 }
 
 //login cart widget
-Widget buildLoginCard(BuildContext context) {
+Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
   return Container(
     padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
@@ -369,7 +361,7 @@ Widget buildLoginCard(BuildContext context) {
           width: double.infinity,
           height: 56,
           child: FilledButton.icon(
-            onPressed: () {},
+            onPressed: onLoginButtonPressed,
             icon:  Icon(Icons.login),
             label:  Text(AppLocalizations.of(context)!.signInOrRegister),
           ),

@@ -82,7 +82,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get support => 'Support';
 
   @override
-  String get jarirServices => 'Language';
+  String get jarirServices => 'Jarir Services';
 
   @override
   String get theme => 'Theme';

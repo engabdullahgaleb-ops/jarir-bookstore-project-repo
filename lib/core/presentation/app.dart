@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/cubits/auth_cubit.dart';
 import 'package:jarir_bookstore_project/core/presentation/Screens/splash_screen.dart';
 import 'package:jarir_bookstore_project/core/cubits/app_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/remote_data_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/theme_cubit.dart';
 import 'package:jarir_bookstore_project/core/repositories/firestore_repository.dart';
+import 'package:jarir_bookstore_project/core/services/auth_service.dart';
 import 'package:jarir_bookstore_project/core/theme/app_theme.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/helpers/locale_helper.dart';
@@ -32,6 +34,9 @@ class App extends StatelessWidget {
             ),
           )..loadData(),
         ),
+        BlocProvider(
+          create: (_) => AuthCubit(AuthService())..checkAuthStatus(),
+        )
       ],
       child: BlocConsumer<AppCubit, AppState>(
         listener: (context,state) {

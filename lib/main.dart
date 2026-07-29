@@ -11,7 +11,8 @@ void main() async{
   //init
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = BlocObserverHelper();
-  Firebase.initializeApp();
+  Firebase.initializeApp(
+  );
   await SharedPreferencesHelper.instance.init();
 
   //run

@@ -33,7 +33,6 @@ class MainScreen extends StatelessWidget {
           ),
          //body
          body: slideFadeSwitcher(
-           key: ValueKey(state),
          child: NavigationBarCubit.getPages()[state],
        ),
       ),
@@ -81,21 +80,37 @@ class MainScreen extends StatelessWidget {
         ),
       ),
       actions: [
-        TextButton(child:
-            Text(context.watch<LocaleCubit>().state.languageCode==SupportedLocaleCodes.en.name?SupportedLocaleCodes.ar.name.toUpperCase():SupportedLocaleCodes.en.name.toUpperCase()
-            ,style: TextStyle(color: AppColors.primary),),
-         onPressed: () {
-           context.read<LocaleCubit>().changeLocale(LocaleHelper.toggle(
-               context.read<LocaleCubit>().state
-           ));
-         },),
-        IconButton(onPressed: (){
-          context.read<ThemeCubit>().toggle();
-        },
-        icon: Icon(context.watch<ThemeCubit>().state.name==Brightness.light.name?
-          Icons.dark_mode_outlined:Icons.light_mode,
-          color: AppColors.primary,
+        TextButton(
+          onPressed: () {
+            context.read<LocaleCubit>().changeLocale(
+              LocaleHelper.toggle(context.read<LocaleCubit>().state),
+            );
+          },
+          child: slideFadeSwitcher(
+            child: Text(
+              context.watch<LocaleCubit>().state.languageCode ==
+                  SupportedLocaleCodes.en.name
+                  ? 'AR'
+                  : 'EN',
+              style: TextStyle(
+                color: AppColors.primary,
+              ),
+            ),
+          ),
         ),
+        IconButton(
+          onPressed: () {
+            context.read<ThemeCubit>().toggle();
+          },
+
+          icon: slideFadeSwitcher(
+            child: Icon(
+              context.watch<ThemeCubit>().state == Brightness.light
+                  ? Icons.dark_mode_outlined
+                  : Icons.light_mode,
+              color: AppColors.primary,
+            ),
+          ),
         )
       ],
     );

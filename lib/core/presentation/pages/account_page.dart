@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/cubits/auth_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/theme_cubit.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
@@ -30,7 +31,9 @@ class AccountPage extends StatelessWidget {
                   physics: BouncingScrollPhysics(),
                   child: Column(
                     children: [
-                      buildLoginCard(context),
+                      buildLoginCard(context: context,onLoginButtonPressed: (){
+                          context.read<AuthCubit>().signInWithGoogle();
+                      }),
 
                       const SizedBox(height: 24),
 
@@ -42,7 +45,7 @@ class AccountPage extends StatelessWidget {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              context.watch<LocaleCubit>().state.languageCode == SupportedLocaleCodes.ar.name ?const Text('🇸🇦'):Text('🇺🇸'),
+                              context.watch<LocaleCubit>().state.languageCode == SupportedLocaleCodes.ar.name ?const Text('Ar'):Text('En'),
                               const SizedBox(width: 8),
                               const Icon(Icons.keyboard_arrow_down),
                             ],

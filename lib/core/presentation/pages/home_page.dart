@@ -31,27 +31,30 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 15,),
 
                 //categories
-                SizedBox(
-                  height: 150,
-                  child: horizontalListView(
-                    count: context.watch<RemoteDataCubit>().state is RemoteDataLoaded?(context.read<RemoteDataCubit>().state as RemoteDataLoaded ).categories.length:10,
-                    itemBuilder: (BuildContext context, index) {
-                      return  SizedBox(
-                          width:150,
-                          child: ConditionalBuilder(
-                            condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
-                            builder:((context){
-                              RemoteDataLoaded result = (context.read<RemoteDataCubit>().state as RemoteDataLoaded );
-                              return buildImageLabelCardItem(
-                                color: RandomColorsHelper.random(context),
-                                context: context,
-                                imageUrl: result.categories[index].imageUrl,
-                                title: context.watch<LocaleCubit>().isArabic()?result.categories[index].title['ar']!:result.categories[index].title['en']!,
-                              );}),
-                            fallback:((error)=> emptyCardItem()) ,
-                          )
-                      );
-                    },
+                Container(
+                  margin: EdgeInsetsDirectional.only(top: 5),
+                  child: SizedBox(
+                    height: 150,
+                    child: horizontalListView(
+                      count: context.watch<RemoteDataCubit>().state is RemoteDataLoaded?(context.read<RemoteDataCubit>().state as RemoteDataLoaded ).categories.length:10,
+                      itemBuilder: (BuildContext context, index) {
+                        return  SizedBox(
+                            width:150,
+                            child: ConditionalBuilder(
+                              condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
+                              builder:((context){
+                                RemoteDataLoaded result = (context.read<RemoteDataCubit>().state as RemoteDataLoaded );
+                                return buildImageLabelCardItem(
+                                  color: RandomColorsHelper.random(context),
+                                  context: context,
+                                  imageUrl: result.categories[index].imageUrl,
+                                  title: context.watch<LocaleCubit>().isArabic()?result.categories[index].title['ar']!:result.categories[index].title['en']!,
+                                );}),
+                              fallback:((error)=> emptyCardItem()) ,
+                            )
+                        );
+                      },
+                    ),
                   ),
                 ),
                 SizedBox(height: 15,),
@@ -118,6 +121,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(AppLocalizations.of(context)!.shoppingByBrand, style:Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500)),
+                    SizedBox(height: 10,),
                     SizedBox(
                       height: 80,
                       child: horizontalListView(
@@ -142,6 +146,8 @@ class HomePage extends StatelessWidget {
                     )
                   ],
                 )
+
+
               ],
             ),
           ),

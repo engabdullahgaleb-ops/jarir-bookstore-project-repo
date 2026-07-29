@@ -245,7 +245,7 @@ abstract class AppLocalizations {
   /// No description provided for @jarirServices.
   ///
   /// In en, this message translates to:
-  /// **'Language'**
+  /// **'Jarir Services'**
   String get jarirServices;
 
   /// No description provided for @theme.
