@@ -12,7 +12,12 @@
           "package_name": "com.example.jarir_bookstore_project"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "544310810780-6judscv46f9rp2u4tkbcvefi2vi2r3k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCBga3lT1S6VbV7Sqoz0bH6wRkCCUmOsQw"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544310810780-6judscv46f9rp2u4tkbcvefi2vi2r3k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
