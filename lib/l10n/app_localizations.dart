@@ -295,6 +295,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shop By Brand'**
   String get shoppingByBrand;
+
+  /// No description provided for @loginDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in using your email or mobile number'**
+  String get loginDescription;
+
+  /// No description provided for @loginWithOTP.
+  ///
+  /// In en, this message translates to:
+  /// **'Login with OTP'**
+  String get loginWithOTP;
+
+  /// No description provided for @loginWithPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Password'**
+  String get loginWithPassword;
+
+  /// No description provided for @phoneOrEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number or email address'**
+  String get phoneOrEmail;
+
+  /// No description provided for @phoneOrEmailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter Phone Number or Email Address'**
+  String get phoneOrEmailHint;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @forgetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgetPassword;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get signIn;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @enableFaceID.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Face ID'**
+  String get enableFaceID;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @agreeTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'By logging in, you agree to the '**
+  String get agreeTerms;
+
+  /// No description provided for @termsOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termsOfService;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @sendOTP.
+  ///
+  /// In en, this message translates to:
+  /// **'Send OTP'**
+  String get sendOTP;
 }
 
 class _AppLocalizationsDelegate

@@ -15,6 +15,9 @@ class HomePage extends StatelessWidget {
   final CarouselSliderController carouselSliderController = CarouselSliderController();
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -25,7 +28,7 @@ class HomePage extends StatelessWidget {
               children: [
                 SizedBox(height: 5,),
                 //search bar
-                inputField(context: context,prefix: Icons.search,suffix: Icons.qr_code,type: TextInputType.webSearch,hint: AppLocalizations.of(context)!.toBeSearched),
+                inputField(prefix: Icon(Icons.search),suffix: Icon(Icons.qr_code),type: TextInputType.webSearch,hint: l10n.toBeSearched),
                 SizedBox(height: 10,),
                 boundaryLine(),
                 SizedBox(height: 15,),
@@ -120,7 +123,7 @@ class HomePage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.shoppingByBrand, style:Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500)),
+                    Text(l10n.shoppingByBrand, style:theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500)),
                     SizedBox(height: 10,),
                     SizedBox(
                       height: 80,

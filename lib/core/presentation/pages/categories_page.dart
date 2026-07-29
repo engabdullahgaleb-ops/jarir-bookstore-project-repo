@@ -11,6 +11,9 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return  SafeArea(
       child: Column(
           children: [
@@ -18,8 +21,8 @@ class CategoriesPage extends StatelessWidget {
               padding: const EdgeInsetsGeometry.symmetric(horizontal: 15.0,vertical: 3),
               child: Row(
                 children: [
-                  Text(AppLocalizations.of(context)!.shoppingByCategory,
-                    style: Theme.of(context).textTheme.headlineSmall,
+                  Text(l10n.shoppingByCategory,
+                    style: theme.textTheme.headlineSmall,
                   ),
                   Spacer(),
                   InkWell(

@@ -31,7 +31,25 @@
     "chooseLang":"Please Choose Preferred Language ",
     "arLang":"Arabic",
     "enLang":"English",
-    "shoppingByBrand": "Shop By Brand"
+    "shoppingByBrand": "Shop By Brand",
+    "loginDescription":"Log in using your email or mobile number",
+    "loginWithOTP": "Login with OTP",
+    "loginWithPassword": "Login with Password",
+    "phoneOrEmail": "Phone number or email address",
+    "phoneOrEmailHint": "Please Enter Phone Number or Email Address",
+    "password": "Password",
+    "forgetPassword": "Forgot password?",
+    "signIn": "Sign in",
+    "register": "Register",
+    "enableFaceID": "Enable Face ID",
+    "login": "Login",
+    "agreeTerms": "By logging in, you agree to the ",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "sendOTP": "Send OTP"
+
+
+
 
 
 

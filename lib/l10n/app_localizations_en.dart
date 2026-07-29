@@ -107,4 +107,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shoppingByBrand => 'Shop By Brand';
+
+  @override
+  String get loginDescription => 'Log in using your email or mobile number';
+
+  @override
+  String get loginWithOTP => 'Login with OTP';
+
+  @override
+  String get loginWithPassword => 'Login with Password';
+
+  @override
+  String get phoneOrEmail => 'Phone number or email address';
+
+  @override
+  String get phoneOrEmailHint => 'Please Enter Phone Number or Email Address';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get forgetPassword => 'Forgot password?';
+
+  @override
+  String get signIn => 'Sign in';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get enableFaceID => 'Enable Face ID';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get agreeTerms => 'By logging in, you agree to the ';
+
+  @override
+  String get termsOfService => 'Terms of Service';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get sendOTP => 'Send OTP';
 }

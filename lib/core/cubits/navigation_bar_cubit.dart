@@ -16,12 +16,13 @@ class NavigationBarCubit extends Cubit<int>{
   }
 
   static List<NavItem> buildNavItemsData(BuildContext context){
+    final l10n = AppLocalizations.of(context)!;
     return [
-      NavItem(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: AppLocalizations.of(context)!.home),
-      NavItem(icon: Icon(Icons.grid_view_outlined), selectedIcon: Icon(Icons.grid_view_rounded), label: AppLocalizations.of(context)!.category),
-      NavItem(icon: Icon(Icons.storefront_outlined), selectedIcon: Icon(Icons.storefront_rounded), label: AppLocalizations.of(context)!.stores),
-      NavItem(icon: Icon(Icons.shopping_cart_outlined), selectedIcon: Icon(Icons.shopping_cart), label: AppLocalizations.of(context)!.cart),
-      NavItem(icon: Icon(Icons.account_circle_outlined), selectedIcon: Icon(Icons.account_circle), label: AppLocalizations.of(context)!.account),
+      NavItem(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: l10n.home),
+      NavItem(icon: Icon(Icons.grid_view_outlined), selectedIcon: Icon(Icons.grid_view_rounded), label: l10n.category),
+      NavItem(icon: Icon(Icons.storefront_outlined), selectedIcon: Icon(Icons.storefront_rounded), label: l10n.stores),
+      NavItem(icon: Icon(Icons.shopping_cart_outlined), selectedIcon: Icon(Icons.shopping_cart), label: l10n.cart),
+      NavItem(icon: Icon(Icons.account_circle_outlined), selectedIcon: Icon(Icons.account_circle), label: l10n.account),
     ];
   }
 

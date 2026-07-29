@@ -107,4 +107,50 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shoppingByBrand => 'تسوق بالعلامة التجارية';
+
+  @override
+  String get loginDescription =>
+      'سجل الدخول باستخدام بريدك الإلكتروني أو رقم الجوال';
+
+  @override
+  String get loginWithOTP => 'الدخول برمز التحقق';
+
+  @override
+  String get loginWithPassword => 'الدخول بكلمة المرور';
+
+  @override
+  String get phoneOrEmail => 'رقم الجوال أو البريد الإلكتروني';
+
+  @override
+  String get phoneOrEmailHint => 'يرجى إدخال رقم الجوال أو البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get forgetPassword => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get signIn => 'تسجيل الدخول';
+
+  @override
+  String get register => 'سجل الان';
+
+  @override
+  String get enableFaceID => 'تفعيل بصمة الوجه';
+
+  @override
+  String get login => 'الدخول';
+
+  @override
+  String get agreeTerms => 'بتسجيل الدخول، أنت توافق على ';
+
+  @override
+  String get termsOfService => 'شروط الخدمة';
+
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get sendOTP => 'ارسال رمز التحقق';
 }

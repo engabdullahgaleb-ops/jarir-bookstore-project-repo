@@ -6,9 +6,12 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return Center(
-      child: Text(AppLocalizations.of(context)!.cartPage,style:
-        Theme.of(context).textTheme.headlineMedium
+      child: Text(l10n.cartPage,style:
+        theme.textTheme.headlineMedium
         ,),
     );
   }

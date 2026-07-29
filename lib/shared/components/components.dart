@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
@@ -13,6 +14,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 //button with title and icon
 Widget iconTitleButton({required Icon icon, required String title,required BuildContext context, onPressed }){
+  final theme = Theme.of(context);
+
   return MaterialButton(
     padding: EdgeInsets.symmetric(horizontal: 2),
     onPressed: onPressed,
@@ -25,18 +28,20 @@ Widget iconTitleButton({required Icon icon, required String title,required Build
       children: [
         icon,
         SizedBox(width: 2,),
-        Text(title,style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w800,),)
+        Text(title,style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w800,),)
       ],
     ),),
   );
 }
-Widget inputField({required BuildContext context,TextEditingController ? controller,TextInputType ?type,IconData ? prefix, IconData ? suffix,String? hint}){
+Widget inputField({TextEditingController ? controller,TextInputType ?type,Widget ? prefix, Widget? suffix,String? hint,TextStyle ?style,bool obSecureText = false}){
   return TextFormField(
+    obscureText: obSecureText,
+    style: style,
     controller: controller,
     keyboardType: type,
     decoration: InputDecoration(
-      suffixIcon: Icon(suffix),
-      prefixIcon: Icon(prefix),
+      suffixIcon: suffix,
+      prefixIcon: prefix,
       hint: Text(hint??''),
     )
 
@@ -53,6 +58,7 @@ Widget boundaryLine(){
 
 // build card item with image and label
 Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUrl, required String title,Color ? color ,double width = 50,double height = 50}){
+  final theme = context!=null?Theme.of(context):null;
   return Card(
     color: color,
     shape: RoundedRectangleBorder(
@@ -77,7 +83,7 @@ Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUr
               ),
             ),
             SizedBox(height: 15,),
-            Text(title,textAlign: TextAlign.center,maxLines: 2,overflow: TextOverflow.ellipsis,style: context!=null?Theme.of(context).textTheme.bodyMedium?.copyWith(
+            Text(title,textAlign: TextAlign.center,maxLines: 2,overflow: TextOverflow.ellipsis,style: theme!=null?theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w600,
             ):TextStyle()),
           ],
@@ -321,6 +327,7 @@ Widget buildGridView(List items, {required BuildContext context, int crossAxisCo
 
 //login cart widget
 Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
+  final l10n = AppLocalizations.of(context)!;
   return Container(
     padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
@@ -341,7 +348,7 @@ Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.welcome,
+                    l10n.welcome,
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -349,7 +356,7 @@ Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    AppLocalizations.of(context)!.signInDescription,
+                    l10n.signInDescription,
                   ),
                 ],
               ),
@@ -363,7 +370,7 @@ Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
           child: FilledButton.icon(
             onPressed: onLoginButtonPressed,
             icon:  Icon(Icons.login),
-            label:  Text(AppLocalizations.of(context)!.signInOrRegister),
+            label:  Text(l10n.signInOrRegister),
           ),
         )
       ],
@@ -412,6 +419,8 @@ Widget buildTile({required BuildContext context,required IconData icon, required
 
 //bottom sheet
 Future<String?> showAppBottomSheet({required BuildContext context,required String title, String ?subtitle,required List<Widget> children}){
+  final theme = Theme.of(context);
+
   return showModalBottomSheet<String>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
@@ -430,7 +439,7 @@ Future<String?> showAppBottomSheet({required BuildContext context,required Strin
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(subtitle??"",style: Theme.of(context).textTheme.titleLarge,),
+                      Text(subtitle??"",style: theme.textTheme.titleLarge,),
                       SizedBox(height: 8,),
                       Row(
                         mainAxisSize: MainAxisSize.max,
@@ -448,13 +457,15 @@ Future<String?> showAppBottomSheet({required BuildContext context,required Strin
 
 // appbar inside bottom sheet
 AppBar buildAppModalBottomSheetAppBar({required BuildContext context,required String title}){
+  final theme = Theme.of(context);
+
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0, leading: IconButton(icon:Icon(Icons.arrow_back_ios_sharp), onPressed: () {
 
   },),
     title: Text(title,style:
-    Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w800,color: AppColors.primary)
+    theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w800,color: AppColors.primary)
       ,),
     actions: [
       IconButton(icon: Icon(Icons.close),
@@ -465,5 +476,15 @@ AppBar buildAppModalBottomSheetAppBar({required BuildContext context,required St
     ],
   );
 
+}
+
+//selected filled button style
+ButtonStyle buildUnSelectedFilledButtonStyle(ThemeData theme,){
+  return  FilledButton.styleFrom(
+    backgroundColor: theme.colorScheme.surface,
+    foregroundColor:
+    theme.colorScheme.onSurface,
+    elevation: 0,
+  );
 }
 

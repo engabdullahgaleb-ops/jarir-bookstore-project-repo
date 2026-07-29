@@ -31,7 +31,22 @@
     "chooseLang":"اختر لغتك المفضلة",
     "arLang":"العربية",
     "enLang":"الانجليزية",
-    "shoppingByBrand": "تسوق بالعلامة التجارية"
+    "shoppingByBrand": "تسوق بالعلامة التجارية",
+    "forgetPassword":"هل نسيت كلمة المرور؟",
+    "termsOfService":"شروط الخدمة",
+    "privacyPolicy":"سياسة الخصوصية",
+    "loginWithPassword":"الدخول بكلمة المرور",
+    "loginWithOTP":"الدخول برمز التحقق",
+    "phoneOrEmail":"رقم الجوال أو البريد الإلكتروني",
+    "login":"الدخول",
+    "register":"سجل الان",
+    "signIn":"تسجيل الدخول",
+    "agreeTerms":"بتسجيل الدخول، أنت توافق على ",
+    "enableFaceID":"تفعيل بصمة الوجه",
+    "loginDescription":"سجل الدخول باستخدام بريدك الإلكتروني أو رقم الجوال",
+    "password":"كلمة المرور",
+    "phoneOrEmailHint":"يرجى إدخال رقم الجوال أو البريد الإلكتروني",
+    "sendOTP": "ارسال رمز التحقق"
 
 
 

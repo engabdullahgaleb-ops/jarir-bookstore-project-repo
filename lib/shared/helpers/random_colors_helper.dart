@@ -26,7 +26,7 @@ class RandomColorsHelper {
   static Color random(BuildContext context) {
     final color = _lightPalette[_random.nextInt(_lightPalette.length)];
 
-    if (Theme.of(context).brightness == Brightness.dark) {
+    if (theme.brightness == Brightness.dark) {
       return darken(color);
     }
 

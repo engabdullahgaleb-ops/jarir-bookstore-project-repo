@@ -13,7 +13,7 @@ return hsl
 }
 
 Color getSurfaceColor (BuildContext context){
-  return Theme.of(context).colorScheme.surface;
+  return theme.colorScheme.surface;
 }
 
 

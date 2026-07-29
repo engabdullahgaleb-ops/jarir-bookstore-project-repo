@@ -6,9 +6,12 @@ class StoresPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return Center(
-      child: Text(AppLocalizations.of(context)!.storesPage,style:
-      Theme.of(context).textTheme.headlineMedium
+      child: Text(l10n.storesPage,style:
+      theme.textTheme.headlineMedium
         ,),
     );
   }

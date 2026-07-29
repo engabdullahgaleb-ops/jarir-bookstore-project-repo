@@ -41,6 +41,9 @@ class MainScreen extends StatelessWidget {
 
   //app bar
   Widget buildAppBar(BuildContext context){
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return AppBar(
       title: Padding(
         padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 5),
@@ -55,18 +58,18 @@ class MainScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(AppLocalizations.of(context)!.welcome, style:Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
+                  Text(l10n.welcome, style:theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
                   Row(children: [
                     Icon(Icons.location_pin),
                     SizedBox(width: 5,),
                     Expanded(
-                        child: Text(MockData.getLocation(context),style:Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w500),maxLines: 1,overflow: TextOverflow.ellipsis,)),//to be changed , for demo purposes only
+                        child: Text(MockData.getLocation(context),style:theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w500),maxLines: 1,overflow: TextOverflow.ellipsis,)),//to be changed , for demo purposes only
                     InkWell(
                         onTap: (){
-                          showAppBottomSheet(context: context, title: AppLocalizations.of(context)!.chooseCity, subtitle: AppLocalizations.of(context)!.chooseDelivery,children: [
-                            iconTitleButton(icon: Icon(Icons.store_outlined,color: AppColors.primary,), title: AppLocalizations.of(context)!.pickupFromJariStore, context: context),
+                          showAppBottomSheet(context: context, title: l10n.chooseCity, subtitle: l10n.chooseDelivery,children: [
+                            iconTitleButton(icon: Icon(Icons.store_outlined,color: AppColors.primary,), title: l10n.pickupFromJariStore, context: context),
                             SizedBox(width: 20,),
-                            iconTitleButton(icon: Icon(Icons.delivery_dining,color: AppColors.primary,), title: AppLocalizations.of(context)!.deliveryToMyLocation, context: context)
+                            iconTitleButton(icon: Icon(Icons.delivery_dining,color: AppColors.primary,), title: l10n.deliveryToMyLocation, context: context)
                           ]);
                         },
                         child: Icon(Icons.keyboard_arrow_down)

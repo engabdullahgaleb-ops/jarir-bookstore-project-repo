@@ -6,20 +6,25 @@ import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/theme_cubit.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
+import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:jarir_bookstore_project/shared/helpers/locale_helper.dart';
+
+import '../screens/login_screen.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
     return  SafeArea(
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsetsGeometry.symmetric(horizontal: 15.0,vertical: 3),
-            child: Text(AppLocalizations.of(context)!.account,
-              style: Theme.of(context).textTheme.headlineSmall,
+            child: Text(l10n.account,
+              style: theme.textTheme.headlineSmall,
             ),
           ),
           SizedBox(height: 10,),
@@ -32,7 +37,8 @@ class AccountPage extends StatelessWidget {
                   child: Column(
                     children: [
                       buildLoginCard(context: context,onLoginButtonPressed: (){
-                          context.read<AuthCubit>().signInWithGoogle();
+                          //context.read<AuthCubit>().signInWithGoogle();
+                        navigateTo(from: context, to: LoginScreen());
                       }),
 
                       const SizedBox(height: 24),
@@ -41,7 +47,7 @@ class AccountPage extends StatelessWidget {
                         child: buildTile(
                           context: context,
                           icon: Icons.translate,
-                          title: AppLocalizations.of(context)!.language,
+                          title: l10n.language,
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -54,11 +60,11 @@ class AccountPage extends StatelessWidget {
                         onTap: (){
                           showAppBottomSheet(
                               context: context,
-                              title: AppLocalizations.of(context)!.language,
-                              subtitle: AppLocalizations.of(context)!.chooseLang,
+                              title: l10n.language,
+                              subtitle: l10n.chooseLang,
                               children: [
                                 iconTitleButton(
-                                    icon: Icon(Icons.language), title: AppLocalizations.of(context)!.arLang,
+                                    icon: Icon(Icons.language), title: l10n.arLang,
                                     context: context,
                                     onPressed: (){
                                       Navigator.pop<String>(context,SupportedLocaleCodes.ar.name);
@@ -66,7 +72,7 @@ class AccountPage extends StatelessWidget {
                                 ),
                                 SizedBox(width: 50),
                                 iconTitleButton(
-                                    icon: Icon(Icons.language), title: AppLocalizations.of(context)!.enLang,
+                                    icon: Icon(Icons.language), title: l10n.enLang,
                                     context: context,
                                     onPressed: (){
                                       Navigator.pop<String>(context,SupportedLocaleCodes.en.name);
@@ -99,17 +105,17 @@ class AccountPage extends StatelessWidget {
                         child: buildTile(
                           context: context,
                           icon: Icons.brightness_4_outlined,
-                          title: AppLocalizations.of(context)!.theme,
+                          title: l10n.theme,
                           trailing: const Icon(Icons.keyboard_arrow_down),
                         ),
                         onTap: (){
                           showAppBottomSheet(
                               context: context,
-                              title: AppLocalizations.of(context)!.theme,
-                              subtitle: AppLocalizations.of(context)!.chooseTheme,
+                              title: l10n.theme,
+                              subtitle: l10n.chooseTheme,
                               children: [
                                 iconTitleButton(
-                                    icon: Icon(Icons.light_mode_outlined), title: AppLocalizations.of(context)!.lightMode,
+                                    icon: Icon(Icons.light_mode_outlined), title: l10n.lightMode,
                                     context: context,
                                     onPressed: (){
                                       Navigator.pop<String>(context,Brightness.light.name); // i want bottom modal to return value
@@ -117,7 +123,7 @@ class AccountPage extends StatelessWidget {
                                 ),
                                 SizedBox(width: 50),
                                 iconTitleButton(
-                                    icon: Icon(Icons.dark_mode_outlined), title: AppLocalizations.of(context)!.darkMode,
+                                    icon: Icon(Icons.dark_mode_outlined), title: l10n.darkMode,
                                     context: context,
                                     onPressed: (){
                                       Navigator.pop<String>(context,Brightness.dark.name);// i want bottom modal to return value
@@ -148,37 +154,37 @@ class AccountPage extends StatelessWidget {
                       buildTile(
                         context: context,
                         icon: Icons.receipt_long_outlined,
-                        title: AppLocalizations.of(context)!.myOrders,
+                        title: l10n.myOrders,
                       ),
 
                       buildTile(
                         context: context,
                         icon: Icons.local_offer_outlined,
-                        title: AppLocalizations.of(context)!.mySpecialOrders,
+                        title: l10n.mySpecialOrders,
                       ),
 
                       buildTile(
                         context: context,
                         icon: Icons.favorite_border,
-                        title: AppLocalizations.of(context)!.wishList,
+                        title: l10n.wishList,
                       ),
 
                       buildTile(
                         context: context,
                         icon: Icons.call_outlined,
-                        title: AppLocalizations.of(context)!.customCare,
+                        title: l10n.customCare,
                       ),
 
                       buildTile(
                         context: context,
                         icon: Icons.headset_mic_outlined,
-                        title: AppLocalizations.of(context)!.support,
+                        title: l10n.support,
                       ),
 
                       buildTile(
                         context: context,
                         icon: Icons.work_outline,
-                        title: AppLocalizations.of(context)!.jarirServices,
+                        title: l10n.jarirServices,
                       ),
                     ],
                   ),
