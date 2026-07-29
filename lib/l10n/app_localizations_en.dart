@@ -104,4 +104,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enLang => 'English';
+
+  @override
+  String get shoppingByBrand => 'Shop By Brand';
 }

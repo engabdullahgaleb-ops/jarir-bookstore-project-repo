@@ -21,6 +21,7 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 5,),
                 //search bar
@@ -41,13 +42,13 @@ class HomePage extends StatelessWidget {
                             condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
                             builder:((context){
                               RemoteDataLoaded result = (context.read<RemoteDataCubit>().state as RemoteDataLoaded );
-                              return cardItem(
+                              return buildImageLabelCardItem(
                                 color: RandomColorsHelper.random(context),
                                 context: context,
                                 imageUrl: result.categories[index].imageUrl,
                                 title: context.watch<LocaleCubit>().isArabic()?result.categories[index].title['ar']!:result.categories[index].title['en']!,
                               );}),
-                            fallback:((error)=> emptyCardItem(context)) ,
+                            fallback:((error)=> emptyCardItem()) ,
                           )
                       );
                     },
@@ -113,7 +114,31 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 15,),
 
                 //brands
-
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(AppLocalizations.of(context)!.shoppingByBrand, style:Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500)),
+                    SizedBox(
+                      height: 100,
+                      child: horizontalListView(
+                        count: context.watch<RemoteDataCubit>().state is RemoteDataLoaded?(context.read<RemoteDataCubit>().state as RemoteDataLoaded ).brands.length:10,
+                        itemBuilder: (BuildContext context, index) {
+                          return  SizedBox(
+                              width:150,
+                              child: ConditionalBuilder(
+                                condition: context.watch<RemoteDataCubit>().state is RemoteDataLoaded,
+                                builder:((context){
+                                  RemoteDataLoaded result = (context.read<RemoteDataCubit>().state as RemoteDataLoaded );
+                                  return buildImageCardItem(imageUrl: result.brands[index].imageUrl);
+                                  }),
+                                fallback:((error)=> emptyCardItem()) ,
+                              )
+                          );
+                        },
+                      )
+                    )
+                  ],
+                )
               ],
             ),
           ),

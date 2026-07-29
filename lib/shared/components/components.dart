@@ -51,7 +51,8 @@ Widget boundaryLine(){
   );
 }
 
-Widget cardItem({ BuildContext ? context ,required String imageUrl, required String title,Color ? color }){
+// build card item with image and label
+Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUrl, required String title,Color ? color }){
   return Card(
     color: color,
     shape: RoundedRectangleBorder(
@@ -86,9 +87,18 @@ Widget cardItem({ BuildContext ? context ,required String imageUrl, required Str
   );
 }
 
-Widget emptyCardItem(BuildContext context){
+
+// build card item with only image
+Widget buildImageCardItem({required String imageUrl}){
+  return Container(
+    child: Center(
+      child: AppNetworkImage(url: imageUrl),
+    ),
+  );
+}
+
+Widget emptyCardItem(){
   return Card(
-    color: getSurfaceColor(context),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
     ),
@@ -103,16 +113,17 @@ Widget emptyCardItem(BuildContext context){
   );
 }
 
-Widget horizontalListView({required int count,itemBuilder}){
+Widget horizontalListView({required int count,required itemBuilder,double spacing = 5}){
   return ListView.separated(
     physics: BouncingScrollPhysics(),
     scrollDirection: Axis.horizontal,
     itemCount: count,
-    separatorBuilder: (_, __) => const SizedBox(width: 5),
+    separatorBuilder: (_, __) => SizedBox(width: spacing),
     itemBuilder: itemBuilder,
   );
 }
 
+//pager
 PageView pager ({required int count,PageController ? controller, required itemBuilder}){
   return PageView.builder(
     itemBuilder: itemBuilder,
@@ -124,7 +135,7 @@ PageView pager ({required int count,PageController ? controller, required itemBu
 }
 
 
-
+// dots page indicator
 Widget smoothPageIndicator({required PageController controller,required int count}){
   return SmoothPageIndicator(
     controller: controller,
@@ -137,6 +148,9 @@ Widget smoothPageIndicator({required PageController controller,required int coun
     ),
   );
 }
+
+
+//auto slider
 Widget carouselSlider({required CarouselSliderController  controller,required items}){
   return CarouselSlider(carouselController: controller,
       options: CarouselOptions(
@@ -144,7 +158,7 @@ Widget carouselSlider({required CarouselSliderController  controller,required it
   ), items: items,);
 }
 
-
+// custom network image
 class AppNetworkImage extends StatelessWidget {
   const AppNetworkImage({
     super.key,
@@ -187,6 +201,8 @@ class AppNetworkImage extends StatelessWidget {
     );
   }
 }
+
+//broken image widget
 Widget brokenImage(){
   return Container(
     color: Colors.grey.shade200,
@@ -298,7 +314,7 @@ Widget buildGridView(List items, {required BuildContext context, int crossAxisCo
     itemBuilder: (context, index) {
       final item = items[index];
       return SizedBox(
-        child: cardItem(
+        child: buildImageLabelCardItem(
           context: context,
           imageUrl: item.imageUrl,
           title:  context.watch<LocaleCubit>().isArabic()?item.title['ar']!:item.title['en']!,

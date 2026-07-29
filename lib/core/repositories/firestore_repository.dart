@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jarir_bookstore_project/core/models/assets_model.dart';
 import 'package:jarir_bookstore_project/core/models/banner_model.dart';
+import 'package:jarir_bookstore_project/core/models/brand_model.dart';
 import 'package:jarir_bookstore_project/core/models/category_model.dart';
 
 class FirestoreRepository {
@@ -40,5 +41,16 @@ class FirestoreRepository {
      return snapshot.docs
          .map((e) => AssetsModel.fromFirestore(e.data()))
          .toList();
+   }
+
+   Future<List<BrandModel>> getBrands() async {
+     final snapshot = await FirebaseFirestore.instance
+         .collection('brands')
+         .get();
+
+     return snapshot.docs
+         .map((e) => BrandModel.fromFirestore(
+         e.data())
+     ).toList();
    }
 }

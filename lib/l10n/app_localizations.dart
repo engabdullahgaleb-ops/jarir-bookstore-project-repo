@@ -289,6 +289,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'English'**
   String get enLang;
+
+  /// No description provided for @shoppingByBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop By Brand'**
+  String get shoppingByBrand;
 }
 
 class _AppLocalizationsDelegate

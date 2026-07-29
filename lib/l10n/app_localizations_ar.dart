@@ -104,4 +104,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get enLang => 'الانجليزية';
+
+  @override
+  String get shoppingByBrand => 'تسوق بالعلامة التجارية';
 }

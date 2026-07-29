@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jarir_bookstore_project/core/models/assets_model.dart';
 import 'package:jarir_bookstore_project/core/models/banner_model.dart';
+import 'package:jarir_bookstore_project/core/models/brand_model.dart';
 import 'package:jarir_bookstore_project/core/models/category_model.dart';
 import 'package:jarir_bookstore_project/core/repositories/firestore_repository.dart';
 
@@ -16,11 +17,13 @@ final class RemoteDataLoaded extends RemoteDataState {
   final List<BannerModel> banners;
   final List<CategoryModel> categories;
   final List<AssetsModel> assets;
+  final List<BrandModel> brands;
 
   RemoteDataLoaded({
     required this.banners,
     required this.categories,
-    required this.assets
+    required this.assets,
+    required this.brands
   });
 }
 
@@ -44,13 +47,15 @@ class RemoteDataCubit extends Cubit<RemoteDataState> {
       await Future.wait([
         repository.getBanners(),
         repository.getCategories(),
-        repository.getAssets()
+        repository.getAssets(),
+        repository.getBrands()
       ]).then((result){
         emit(
           RemoteDataLoaded(
-            assets: result[2] as List<AssetsModel>,
             banners: result[0] as List<BannerModel>,
             categories: result[1] as List<CategoryModel>,
+            assets: result[2] as List<AssetsModel>,
+            brands: result[3] as List<BrandModel>
           ),
         );
       }).catchError((error){
