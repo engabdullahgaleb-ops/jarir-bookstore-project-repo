@@ -262,4 +262,53 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidOTP => 'Please enter a valid verification code.';
+
+  @override
+  String get continueWithGoogle => 'Continue With Google';
+
+  @override
+  String get registrationSuccess => 'Registration Successful';
+
+  @override
+  String get errorEmailAlreadyInUse => 'This email is already registered.';
+
+  @override
+  String get errorInvalidEmail => 'Invalid email address.';
+
+  @override
+  String get errorWeakPassword => 'Password is too weak.';
+
+  @override
+  String get errorNoInternet => 'No internet connection.';
+
+  @override
+  String get errorRegistrationFailed => 'Registration failed.';
+
+  @override
+  String get errorSomethingWentWrong => 'Something went wrong.';
+
+  @override
+  String get errorInvalidCredential => 'Incorrect email or password.';
+
+  @override
+  String get errorUserDisabled => 'This account has been disabled.';
+
+  @override
+  String get errorTooManyRequests =>
+      'Too many attempts. Please try again later.';
+
+  @override
+  String get errorLoginFailed => 'Login failed.';
+
+  @override
+  String get signInSuccess => 'Login Success';
+
+  @override
+  String get member => 'Member';
+
+  @override
+  String get notMember => 'Not a member?';
+
+  @override
+  String get unknownUser => 'Unknown User';
 }

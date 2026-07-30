@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/remote_data_cubit.dart';
+import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
 import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
@@ -119,7 +120,7 @@ class HomePage extends StatelessWidget {
                     );
                   }),
                   fallback: ((error) {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(child: appLoadingIndicator(color:AppColors.grey500));
                   }),
                 ),
               ),
@@ -142,7 +143,7 @@ class HomePage extends StatelessWidget {
                       return AppNetworkImage(url: result.assets[0].banner);
                     }),
                     fallback: ((error) {
-                      return Center(child: CircularProgressIndicator());
+                      return Center(child: appLoadingIndicator(color:AppColors.grey500));
                     }),
                   ),
                 ),

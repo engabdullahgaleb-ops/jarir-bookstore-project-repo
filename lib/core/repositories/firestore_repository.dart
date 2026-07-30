@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jarir_bookstore_project/core/models/assets_model.dart';
 import 'package:jarir_bookstore_project/core/models/banner_model.dart';
 import 'package:jarir_bookstore_project/core/models/brand_model.dart';
 import 'package:jarir_bookstore_project/core/models/category_model.dart';
+import 'package:jarir_bookstore_project/core/models/user_model.dart';
 
 class FirestoreRepository {
   FirestoreRepository();
@@ -46,5 +48,20 @@ class FirestoreRepository {
     return snapshot.docs
         .map((e) => BrandModel.fromFirestore(e.data()))
         .toList();
+  }
+
+  Future<void> registerNewUser (Map<String,dynamic> data,String uid) async {
+    return await FirebaseFirestore.instance.collection('users').doc(uid).set(data);
+  }
+
+  Future<UserModel?> getUserData(String uid) async {
+    final doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get();
+
+    if (!doc.exists) return null;
+
+    return UserModel.fromFirestore(doc.data()!);
   }
 }

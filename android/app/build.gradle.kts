@@ -6,12 +6,18 @@ plugins {
     id("com.google.gms.google-services")
 
 
+
 }
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.16.0"))
 
 
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation(platform("com.google.firebase:firebase-bom:34.15.0"))
+
 
 }
 android {

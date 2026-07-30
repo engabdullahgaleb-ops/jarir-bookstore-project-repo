@@ -80,6 +80,22 @@
   "invalidFirstName": "Please enter a valid first name.",
   "invalidLastName": "Please enter a valid last name.",
   "acceptTerms": "You must accept the Terms and Conditions.",
-  "invalidOTP": "Please enter a valid verification code."
+  "invalidOTP": "Please enter a valid verification code.",
+  "continueWithGoogle": "Continue With Google",
+  "registrationSuccess": "Registration Successful",
+  "errorEmailAlreadyInUse": "This email is already registered.",
+  "errorInvalidEmail": "Invalid email address.",
+  "errorWeakPassword": "Password is too weak.",
+  "errorNoInternet": "No internet connection.",
+  "errorRegistrationFailed": "Registration failed.",
+  "errorSomethingWentWrong": "Something went wrong.",
+  "errorInvalidCredential": "Incorrect email or password.",
+  "errorUserDisabled": "This account has been disabled.",
+  "errorTooManyRequests": "Too many attempts. Please try again later.",
+  "errorLoginFailed": "Login failed.",
+  "signInSuccess": "Login Success",
+  "member": "Member",
+  "notMember": "Not a member?",
+  "unknownUser": "Unknown User"
 
 }

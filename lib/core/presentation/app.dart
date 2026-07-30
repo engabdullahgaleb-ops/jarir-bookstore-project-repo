@@ -34,7 +34,7 @@ class App extends StatelessWidget {
               RemoteDataCubit(repository: FirestoreRepository())..loadData(),
         ),
         BlocProvider(
-          create: (_) => AuthCubit(AuthService())..checkAuthStatus(),
+          create: (_) => AuthCubit(AuthService())..checkAuthStatus()..getCurrentUserData(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppState>(

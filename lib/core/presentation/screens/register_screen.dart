@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/cubits/auth_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/register_ui_cubit.dart';
+import 'package:jarir_bookstore_project/core/models/user_model.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
+import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:jarir_bookstore_project/shared/helpers/validators.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -21,19 +24,24 @@ class RegisterScreen extends StatelessWidget {
     final colors = theme.colorScheme;
     final text = theme.textTheme;
     final l10n = AppLocalizations.of(context)!;
-    final formkey = GlobalKey<FormState>();
 
     return BlocProvider<RegisterUICubit>(
       create: (context)=>RegisterUICubit(),
-      child: BlocConsumer<RegisterUICubit,RegisterUiState>(
-        listener: (context,state){},
-        builder:(context,state)=> Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              //form
-              child: Form(
-                key:formkey,
+      child: BlocBuilder<RegisterUICubit,RegisterUiState>(
+        builder:(context,state)=> BlocConsumer<AuthCubit,AuthState>(
+          listener:(context,authState){
+            if(authState is AuthAuthenticated){
+              showAppSnackBar(context, message: l10n.registrationSuccess);
+              Navigator.pop(context);
+            } else if (authState is AuthError) {
+              showAppSnackBar(context, message: authState.message,isError: true);
+            }
+          },
+          builder:(context,authState)=> Scaffold(
+            body: SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                //form
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -431,8 +439,18 @@ class RegisterScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 56,
                       child: FilledButton(
-                        onPressed: () {},
-                        child: Text(l10n.register),
+                        onPressed: () {
+                          if(state.formValid.isValid()){
+                            context.read<AuthCubit>().register(UserModel(
+                                fname: firstNameController.text,
+                                lname: lastNameController.text,
+                                email: emailController.text,
+                                phone: phoneController.text,
+                                password: passwordController.text
+                            ),context: context);
+                          }
+                        },
+                        child: authState is AuthLoading?appLoadingIndicator(color: Colors.white):Text(l10n.register),
                       ),
                     ),
 

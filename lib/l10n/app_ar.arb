@@ -86,5 +86,23 @@
   "passwordRequired": "كلمة المرور مطلوبة.",
   "firstNameRequired": "الاسم الأول مطلوب.",
   "lastNameRequired": "اسم العائلة مطلوب.",
-  "confirmPasswordRequired": "يرجى تأكيد كلمة المرور."
+  "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
+  "continueWithGoogle": "المتابعة باستخدام جوجل",
+  "registrationSuccess": "تم التسجيل بنجاح",
+  "errorEmailAlreadyInUse": "هذا البريد الإلكتروني مسجل بالفعل.",
+  "errorInvalidEmail": "عنوان البريد الإلكتروني غير صالح.",
+  "errorWeakPassword": "كلمة المرور ضعيفة.",
+  "errorNoInternet": "لا يوجد اتصال بالإنترنت.",
+  "errorRegistrationFailed": "فشلت عملية إنشاء الحساب.",
+  "errorSomethingWentWrong": "حدث خطأ ما.",
+  "errorInvalidCredential": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+  "errorUserDisabled": "تم تعطيل هذا الحساب.",
+  "errorTooManyRequests": "عدد كبير من المحاولات. يرجى المحاولة لاحقًا.",
+  "errorLoginFailed": "فشل تسجيل الدخول.",
+  "signInSuccess": "تم الدخول بنجاح",
+  "member": "عضو",
+  "notMember": "لست عضواً؟",
+  "unknownUser": "مستخدم مجهول"
+
+
 }

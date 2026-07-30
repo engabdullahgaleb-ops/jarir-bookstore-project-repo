@@ -12,4 +12,8 @@ class PasswordValidationModel {
     this.hasNumber = false,
     this.hasSpecialCharacter = false,
   });
+
+  bool isValid(){
+    return hasMinLength&&hasUppercase&&hasLowercase&&hasNumber&&hasSpecialCharacter;
+  }
 }

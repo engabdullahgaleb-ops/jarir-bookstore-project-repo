@@ -1,13 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/navigation_bar_cubit.dart';
 import 'package:jarir_bookstore_project/core/models/bottom_nav_item.dart';
 import 'package:jarir_bookstore_project/core/theme/app_colors.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
-import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -46,7 +44,7 @@ Widget iconTitleButton({
 }
 
 Widget inputField({
-  String ? errorText,
+  String? errorText,
   validator,
   TextEditingController? controller,
   TextInputType? type,
@@ -68,7 +66,7 @@ Widget inputField({
       suffixIcon: suffix,
       prefixIcon: prefix,
       hint: Text(hint ?? ''),
-      errorText: errorText
+      errorText: errorText,
     ),
   );
 }
@@ -158,7 +156,7 @@ Widget emptyCardItem() {
     clipBehavior: Clip.antiAliasWithSaveLayer,
     child: Padding(
       padding: const EdgeInsets.all(15),
-      child: Center(child: CircularProgressIndicator()),
+      child: Center(child: appLoadingIndicator(color: AppColors.grey500)),
     ),
   );
 }
@@ -251,7 +249,8 @@ class AppNetworkImage extends StatelessWidget {
           if (progress == null) return child;
 
           return Center(
-            child: CircularProgressIndicator(
+            child: appLoadingIndicator(
+              color: AppColors.grey500,
               value: progress.expectedTotalBytes != null
                   ? progress.cumulativeBytesLoaded /
                         progress.expectedTotalBytes!
@@ -386,12 +385,17 @@ Widget buildGridView(
 }
 
 //login cart widget
-Widget buildLoginCard({required BuildContext context, onLoginButtonPressed}) {
-  final l10n = AppLocalizations.of(context)!;
+Widget buildLoginCard({
+  onLoginButtonPressed,
+  required String title,
+  required String subtitle,
+  required String buttonLabel,
+  Color? backgroundColor,
+}) {
   return Container(
     padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
-      color: getSurfaceColor(context),
+      color: backgroundColor,
       borderRadius: BorderRadius.circular(20),
     ),
     child: Column(
@@ -405,14 +409,14 @@ Widget buildLoginCard({required BuildContext context, onLoginButtonPressed}) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    l10n.welcome,
+                    title,
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(l10n.signInDescription),
+                  Text(subtitle),
                 ],
               ),
             ),
@@ -425,7 +429,7 @@ Widget buildLoginCard({required BuildContext context, onLoginButtonPressed}) {
           child: FilledButton.icon(
             onPressed: onLoginButtonPressed,
             icon: Icon(Icons.login),
-            label: Text(l10n.signInOrRegister),
+            label: Text(buttonLabel),
           ),
         ),
       ],
@@ -543,5 +547,154 @@ ButtonStyle buildUnSelectedFilledButtonStyle(ThemeData theme) {
     backgroundColor: theme.colorScheme.surface,
     foregroundColor: theme.colorScheme.onSurface,
     elevation: 0,
+  );
+}
+
+//google sign in button
+Widget outlinedSignInButton({
+  required VoidCallback onPressed,
+  bool isLoading = false,
+  required String label,
+  Widget? icon,
+  required,
+}) {
+  return SizedBox(
+    width: double.infinity,
+    height: 56,
+    child: OutlinedButton.icon(
+      onPressed: isLoading ? null : onPressed,
+      icon: isLoading
+          ? SizedBox(
+              width: 20,
+              height: 20,
+              child: appLoadingIndicator(
+                strokeWidth: 2,
+                color: AppColors.grey500,
+              ),
+            )
+          : icon,
+      label: Text(label),
+      style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black87,
+        side: BorderSide(color: Colors.grey.shade300),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    ),
+  );
+}
+
+void showAppSnackBar(
+  BuildContext context, {
+  required String message,
+  bool isError = false,
+}) {
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            Icon(
+              isError ? Icons.error_outline : Icons.check_circle_outline,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 12),
+            Expanded(child: Text(message)),
+          ],
+        ),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(16),
+        duration: const Duration(seconds: 3),
+        backgroundColor: isError ? Colors.red.shade600 : Colors.green.shade600,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
+}
+
+//progress indicator
+Widget appLoadingIndicator({
+  double size = 24,
+  double strokeWidth = 2.5,
+  Color? color,
+  double? value,
+}) {
+  return SizedBox(
+    width: size,
+    height: size,
+    child: CircularProgressIndicator(
+      value: value,
+      strokeWidth: strokeWidth,
+      color: color,
+    ),
+  );
+}
+
+Widget buildUserCard({
+  required BuildContext context,
+  required String name,
+  required String email,
+  required VoidCallback onLogout,
+  Color? backgroundColor,
+}) {
+  final theme = Theme.of(context);
+
+  return Card(
+    color: backgroundColor,
+    elevation: 0,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 5),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 32,
+            child: Text(
+              name[0].toUpperCase(),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+
+          const SizedBox(width: 16),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(email, maxLines: 1,style: theme.textTheme.bodyMedium?.copyWith(
+                      overflow: TextOverflow.ellipsis,
+
+                ),),
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primaryContainer,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child:  Text(AppLocalizations.of(context)!.member),
+                ),
+              ],
+            ),
+          ),
+
+          IconButton(
+            tooltip: "Logout",
+            onPressed: onLogout,
+            icon: const Icon(Icons.logout_rounded),
+          ),
+        ],
+      ),
+    ),
   );
 }

@@ -39,4 +39,8 @@ class FormValidationModel {
     );
 
   }
+
+  bool isValid(){
+    return fNameValid && lNameValid && phoneValid && emailValid && confirmPasswordValid && termsAccepted && passwordValid.isValid();
+  }
 }

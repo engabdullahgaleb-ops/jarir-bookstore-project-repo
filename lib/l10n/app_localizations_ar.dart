@@ -262,4 +262,54 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalidOTP => 'يرجى إدخال رمز تحقق صحيح.';
+
+  @override
+  String get continueWithGoogle => 'المتابعة باستخدام جوجل';
+
+  @override
+  String get registrationSuccess => 'تم التسجيل بنجاح';
+
+  @override
+  String get errorEmailAlreadyInUse => 'هذا البريد الإلكتروني مسجل بالفعل.';
+
+  @override
+  String get errorInvalidEmail => 'عنوان البريد الإلكتروني غير صالح.';
+
+  @override
+  String get errorWeakPassword => 'كلمة المرور ضعيفة.';
+
+  @override
+  String get errorNoInternet => 'لا يوجد اتصال بالإنترنت.';
+
+  @override
+  String get errorRegistrationFailed => 'فشلت عملية إنشاء الحساب.';
+
+  @override
+  String get errorSomethingWentWrong => 'حدث خطأ ما.';
+
+  @override
+  String get errorInvalidCredential =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get errorUserDisabled => 'تم تعطيل هذا الحساب.';
+
+  @override
+  String get errorTooManyRequests =>
+      'عدد كبير من المحاولات. يرجى المحاولة لاحقًا.';
+
+  @override
+  String get errorLoginFailed => 'فشل تسجيل الدخول.';
+
+  @override
+  String get signInSuccess => 'تم الدخول بنجاح';
+
+  @override
+  String get member => 'عضو';
+
+  @override
+  String get notMember => 'لست عضواً؟';
+
+  @override
+  String get unknownUser => 'مستخدم مجهول';
 }

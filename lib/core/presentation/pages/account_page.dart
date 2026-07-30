@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jarir_bookstore_project/core/cubits/auth_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/locale_cubit.dart';
 import 'package:jarir_bookstore_project/core/cubits/theme_cubit.dart';
 import 'package:jarir_bookstore_project/core/presentation/screens/register_screen.dart';
@@ -37,13 +38,21 @@ class AccountPage extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
+                    context.watch<AuthCubit>().state is ! AuthAuthenticated?
                     buildLoginCard(
-                      context: context,
+                      backgroundColor: getSurfaceColor(context),
+                      title: l10n.welcome,
+                      subtitle: l10n.signInDescription,
+                      buttonLabel: l10n.signInOrRegister,
                       onLoginButtonPressed: () {
-                        //context.read<AuthCubit>().signInWithGoogle();
                         navigateTo(from: context, to: LoginScreen());
                       },
-                    ),
+                    ): buildUserCard(context: context, email: context.read<AuthCubit>().getCurrentUser()!.email.toString(),
+                        name: context.watch<AuthCubit>().userModel!=null?context.read<AuthCubit>().userModel!.getFullName().toUpperCase():l10n.unknownUser,
+                        onLogout: () {
+                      context.read<AuthCubit>().signOut();
+                      //logic when logout
+                    }),
 
                     const SizedBox(height: 24),
 

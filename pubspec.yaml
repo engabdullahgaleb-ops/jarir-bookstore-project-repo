@@ -47,6 +47,8 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   google_sign_in:
+  flutter_svg:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -72,6 +74,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
