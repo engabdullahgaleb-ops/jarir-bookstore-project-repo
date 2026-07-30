@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -13,7 +12,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appName => 'مكتبة جرير';
 
   @override
-  String get welcome => 'مرحباً';
+  String get welcome => 'مرحباً بك في جرير!';
 
   @override
   String get chooseCity => 'اختر المدينة';
@@ -153,4 +152,68 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sendOTP => 'ارسال رمز التحقق';
+
+  @override
+  String get personalInformation => 'المعلومات الشخصية';
+
+  @override
+  String get contactInformation => 'معلومات التواصل';
+
+  @override
+  String get firstName => 'الاسم الأول';
+
+  @override
+  String get lastName => 'اسم العائلة';
+
+  @override
+  String get mobileNumber => 'رقم الجوال';
+
+  @override
+  String get sendVerificationCode => 'إرسال رمز التحقق';
+
+  @override
+  String get emailAddress => 'البريد الإلكتروني';
+
+  @override
+  String get emailHint => 'xyz@example.com';
+
+  @override
+  String get passwordRequirementLength => 'يجب أن تتكون كلمة المرور من 8 أحرف';
+
+  @override
+  String get passwordRequirementUppercase =>
+      'يجب أن تحتوي على حرف كبير واحد على الأقل';
+
+  @override
+  String get passwordRequirementLowercase =>
+      'يجب أن تحتوي على حرف صغير واحد على الأقل';
+
+  @override
+  String get passwordRequirementNumber => 'يجب أن تحتوي على رقم واحد على الأقل';
+
+  @override
+  String get passwordRequirementSpecial =>
+      'يجب أن تحتوي على حرف خاص واحد على الأقل مثل @، #، &، ؛، إلخ.';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get marketingConsent =>
+      'أود معرفة أحدث عروض جرير وإعلاناتها واتصالاتها التسويقية المصممة خصيصاً لتناسب اهتماماتي.';
+
+  @override
+  String get createAccountAgree => 'بإنشاء حساب جديد، أنا أوافق على جرير ';
+
+  @override
+  String get termsAndConditions => 'الشروط والأحكام';
+
+  @override
+  String get and => ' و ';
+
+  @override
+  String get buyingForCompany => 'هل تشتري لشركة؟';
+
+  @override
+  String get createBusinessAccount => 'إنشاء حساب أعمال';
 }

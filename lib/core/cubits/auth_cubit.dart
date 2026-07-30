@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:jarir_bookstore_project/core/services/auth_service.dart';
 
-
 // states
 sealed class AuthState {
   const AuthState();
@@ -29,9 +28,9 @@ class AuthUnauthenticated extends AuthState {
 
 class AuthError extends AuthState {
   final String message;
+
   AuthError(this.message);
 }
-
 
 //cubit
 class AuthCubit extends Cubit<AuthState> {
@@ -45,7 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final credential = await _authService.signInWithGoogle();
 
-      print(credential==null);
+      print(credential == null);
       if (credential != null && credential.user != null) {
         emit(AuthAuthenticated(credential.user!));
       } else {

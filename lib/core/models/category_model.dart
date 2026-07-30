@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 
 class CategoryModel {
   final String imageUrl;
@@ -11,10 +11,7 @@ class CategoryModel {
     required this.title,
   });
 
-  factory CategoryModel.fromFirestore(
-      String id,
-      Map<String, dynamic> json,
-      ) {
+  factory CategoryModel.fromFirestore(String id, Map<String, dynamic> json) {
     return CategoryModel(
       imageUrl: json['imageUrl'],
       order: json['order'],
@@ -23,11 +20,7 @@ class CategoryModel {
   }
 
   Map<String, dynamic> toFirestore() {
-    return {
-      'imageUrl': imageUrl,
-      'order': order,
-      'title': title,
-    };
+    return {'imageUrl': imageUrl, 'order': order, 'title': title};
   }
 
   String getTitle(String languageCode) {

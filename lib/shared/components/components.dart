@@ -11,29 +11,49 @@ import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 import 'package:jarir_bookstore_project/shared/helpers/random_colors_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-
 //button with title and icon
-Widget iconTitleButton({required Icon icon, required String title,required BuildContext context, onPressed }){
+Widget iconTitleButton({
+  required Icon icon,
+  required String title,
+  required BuildContext context,
+  onPressed,
+}) {
   final theme = Theme.of(context);
 
   return MaterialButton(
     padding: EdgeInsets.symmetric(horizontal: 2),
     onPressed: onPressed,
     shape: RoundedRectangleBorder(
-      side:BorderSide(color: AppColors.primary),
+      side: BorderSide(color: AppColors.primary),
       borderRadius: BorderRadius.all(Radius.circular(7)),
     ),
-    child: Padding(padding: EdgeInsets.all(10),
-    child: Row(
-      children: [
-        icon,
-        SizedBox(width: 2,),
-        Text(title,style: theme.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w800,),)
-      ],
-    ),),
+    child: Padding(
+      padding: EdgeInsets.all(10),
+      child: Row(
+        children: [
+          icon,
+          SizedBox(width: 2),
+          Text(
+            title,
+            style: theme.textTheme.bodyLarge!.copyWith(
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      ),
+    ),
   );
 }
-Widget inputField({TextEditingController ? controller,TextInputType ?type,Widget ? prefix, Widget? suffix,String? hint,TextStyle ?style,bool obSecureText = false}){
+
+Widget inputField({
+  TextEditingController? controller,
+  TextInputType? type,
+  Widget? prefix,
+  Widget? suffix,
+  String? hint,
+  TextStyle? style,
+  bool obSecureText = false,
+}) {
   return TextFormField(
     obscureText: obSecureText,
     style: style,
@@ -42,13 +62,12 @@ Widget inputField({TextEditingController ? controller,TextInputType ?type,Widget
     decoration: InputDecoration(
       suffixIcon: suffix,
       prefixIcon: prefix,
-      hint: Text(hint??''),
-    )
-
+      hint: Text(hint ?? ''),
+    ),
   );
 }
 
-Widget boundaryLine(){
+Widget boundaryLine() {
   return Container(
     width: double.infinity,
     height: 0.5,
@@ -57,8 +76,15 @@ Widget boundaryLine(){
 }
 
 // build card item with image and label
-Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUrl, required String title,Color ? color ,double width = 50,double height = 50}){
-  final theme = context!=null?Theme.of(context):null;
+Widget buildImageLabelCardItem({
+  BuildContext? context,
+  required String imageUrl,
+  required String title,
+  Color? color,
+  double width = 50,
+  double height = 50,
+}) {
+  final theme = context != null ? Theme.of(context) : null;
   return Card(
     color: color,
     shape: RoundedRectangleBorder(
@@ -76,16 +102,24 @@ Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUr
               height: height,
               child: CircleAvatar(
                 backgroundColor: Colors.white,
-                child:Padding(
+                child: Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: AppNetworkImage(url: imageUrl,),
+                  child: AppNetworkImage(url: imageUrl),
                 ),
               ),
             ),
-            SizedBox(height: 15,),
-            Text(title,textAlign: TextAlign.center,maxLines: 2,overflow: TextOverflow.ellipsis,style: theme!=null?theme.textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-            ):TextStyle()),
+            SizedBox(height: 15),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: theme != null
+                  ? theme.textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    )
+                  : TextStyle(),
+            ),
           ],
         ),
       ),
@@ -93,20 +127,23 @@ Widget buildImageLabelCardItem({ BuildContext ? context ,required String imageUr
   );
 }
 
-
 // build card item with only image
-Widget buildImageCardItem({required String imageUrl,double ? width,double ? height}){
+Widget buildImageCardItem({
+  required String imageUrl,
+  double? width,
+  double? height,
+}) {
   return Card(
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(5))
+      borderRadius: BorderRadius.all(Radius.circular(5)),
     ),
     elevation: 2,
     clipBehavior: Clip.antiAliasWithSaveLayer,
-    child: AppNetworkImage(height:height,width: width,url: imageUrl),
+    child: AppNetworkImage(height: height, width: width, url: imageUrl),
   );
 }
 
-Widget emptyCardItem(){
+Widget emptyCardItem() {
   return Card(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -115,14 +152,16 @@ Widget emptyCardItem(){
     clipBehavior: Clip.antiAliasWithSaveLayer,
     child: Padding(
       padding: const EdgeInsets.all(15),
-      child: Center(
-        child: CircularProgressIndicator(),
-      ),
+      child: Center(child: CircularProgressIndicator()),
     ),
   );
 }
 
-Widget horizontalListView({required int count,required itemBuilder,double spacing = 5}){
+Widget horizontalListView({
+  required int count,
+  required itemBuilder,
+  double spacing = 5,
+}) {
   return ListView.separated(
     physics: BouncingScrollPhysics(),
     scrollDirection: Axis.horizontal,
@@ -133,7 +172,11 @@ Widget horizontalListView({required int count,required itemBuilder,double spacin
 }
 
 //pager
-PageView pager ({required int count,PageController ? controller, required itemBuilder}){
+PageView pager({
+  required int count,
+  PageController? controller,
+  required itemBuilder,
+}) {
   return PageView.builder(
     itemBuilder: itemBuilder,
     controller: controller,
@@ -143,9 +186,11 @@ PageView pager ({required int count,PageController ? controller, required itemBu
   );
 }
 
-
 // dots page indicator
-Widget smoothPageIndicator({required PageController controller,required int count}){
+Widget smoothPageIndicator({
+  required PageController controller,
+  required int count,
+}) {
   return SmoothPageIndicator(
     controller: controller,
     count: count,
@@ -153,18 +198,21 @@ Widget smoothPageIndicator({required PageController controller,required int coun
       expansionFactor: 4,
       dotHeight: 10,
       dotWidth: 10,
-      activeDotColor: AppColors.primary
+      activeDotColor: AppColors.primary,
     ),
   );
 }
 
-
 //auto slider
-Widget carouselSlider({required CarouselSliderController  controller,required items}){
-  return CarouselSlider(carouselController: controller,
-      options: CarouselOptions(
-    autoPlay:true,
-  ), items: items,);
+Widget carouselSlider({
+  required CarouselSliderController controller,
+  required items,
+}) {
+  return CarouselSlider(
+    carouselController: controller,
+    options: CarouselOptions(autoPlay: true),
+    items: items,
+  );
 }
 
 // custom network image
@@ -200,19 +248,19 @@ class AppNetworkImage extends StatelessWidget {
             child: CircularProgressIndicator(
               value: progress.expectedTotalBytes != null
                   ? progress.cumulativeBytesLoaded /
-                  progress.expectedTotalBytes!
+                        progress.expectedTotalBytes!
                   : null,
             ),
           );
         },
-        errorBuilder: (_, __, ___) => brokenImage(width: width,height: height),
+        errorBuilder: (_, __, ___) => brokenImage(width: width, height: height),
       ),
     );
   }
 }
 
 //broken image widget
-Widget brokenImage({double ? width, double ? height}){
+Widget brokenImage({double? width, double? height}) {
   return Container(
     width: width,
     height: height,
@@ -232,7 +280,8 @@ class AppNavigationBar extends StatelessWidget {
     required this.context,
   });
 
-  final BuildContext context ;
+  final BuildContext context;
+
   final List<NavItem> itemsData;
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -253,26 +302,27 @@ class AppNavigationBar extends StatelessWidget {
         selectedIndex: currentIndex,
         indicatorColor: Colors.transparent,
         onDestinationSelected: onTap,
-        destinations: List.generate(itemsData.length, ((index) =>
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: context.watch<NavigationBarCubit>().state == index
-                        ? AppColors.primary
-                        : Colors.transparent,
-                    width: 3,
-                  ),
+        destinations: List.generate(
+          itemsData.length,
+          ((index) => Container(
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: context.watch<NavigationBarCubit>().state == index
+                      ? AppColors.primary
+                      : Colors.transparent,
+                  width: 3,
                 ),
               ),
-              child: NavigationDestination(
-                tooltip: itemsData[index].label,
-                icon: itemsData[index].icon,
-                selectedIcon: itemsData[index].selectedIcon,
-                label: itemsData[index].label,
-              ),
-            )
-        ))
+            ),
+            child: NavigationDestination(
+              tooltip: itemsData[index].label,
+              icon: itemsData[index].icon,
+              selectedIcon: itemsData[index].selectedIcon,
+              label: itemsData[index].label,
+            ),
+          )),
+        ),
       ),
     );
   }
@@ -291,10 +341,7 @@ Widget slideFadeSwitcher({
           begin: const Offset(0.15, 0),
           end: Offset.zero,
         ).animate(animation),
-        child: FadeTransition(
-          opacity: animation,
-          child: child,
-        ),
+        child: FadeTransition(opacity: animation, child: child),
       );
     },
     child: child,
@@ -302,7 +349,11 @@ Widget slideFadeSwitcher({
 }
 
 //build grid view
-Widget buildGridView(List items, {required BuildContext context, int crossAxisCount = 2}) {
+Widget buildGridView(
+  List items, {
+  required BuildContext context,
+  int crossAxisCount = 2,
+}) {
   return GridView.builder(
     padding: const EdgeInsets.all(16),
     itemCount: items.length,
@@ -310,7 +361,7 @@ Widget buildGridView(List items, {required BuildContext context, int crossAxisCo
       crossAxisCount: crossAxisCount,
       crossAxisSpacing: 16,
       mainAxisSpacing: 16,
-      childAspectRatio: 1/1.3,
+      childAspectRatio: 1 / 1.3,
     ),
     itemBuilder: (context, index) {
       final item = items[index];
@@ -318,15 +369,18 @@ Widget buildGridView(List items, {required BuildContext context, int crossAxisCo
         child: buildImageLabelCardItem(
           context: context,
           imageUrl: item.imageUrl,
-          title:  context.watch<LocaleCubit>().isArabic()?item.title['ar']!:item.title['en']!,
-          color: RandomColorsHelper.random(context)),
+          title: context.watch<LocaleCubit>().isArabic()
+              ? item.title['ar']!
+              : item.title['en']!,
+          color: RandomColorsHelper.random(context),
+        ),
       );
     },
   );
 }
 
 //login cart widget
-Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
+Widget buildLoginCard({required BuildContext context, onLoginButtonPressed}) {
   final l10n = AppLocalizations.of(context)!;
   return Container(
     padding: const EdgeInsets.all(20),
@@ -338,10 +392,7 @@ Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
       children: [
         Row(
           children: [
-            const CircleAvatar(
-              radius: 26,
-              child: Icon(Icons.person_outline),
-            ),
+            const CircleAvatar(radius: 26, child: Icon(Icons.person_outline)),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
@@ -355,41 +406,38 @@ Widget buildLoginCard({required BuildContext context,onLoginButtonPressed}) {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    l10n.signInDescription,
-                  ),
+                  Text(l10n.signInDescription),
                 ],
               ),
-            )
+            ),
           ],
         ),
-         SizedBox(height: 20),
+        SizedBox(height: 20),
         SizedBox(
           width: double.infinity,
           height: 56,
           child: FilledButton.icon(
             onPressed: onLoginButtonPressed,
-            icon:  Icon(Icons.login),
-            label:  Text(l10n.signInOrRegister),
+            icon: Icon(Icons.login),
+            label: Text(l10n.signInOrRegister),
           ),
-        )
+        ),
       ],
     ),
   );
 }
 
-
 //tile widget
-Widget buildTile({required BuildContext context,required IconData icon, required String title, Widget? trailing,}) {
+Widget buildTile({
+  required BuildContext context,
+  required IconData icon,
+  required String title,
+  Widget? trailing,
+}) {
   return Container(
     margin: const EdgeInsets.only(bottom: 16),
-    padding: const EdgeInsets.symmetric(
-      horizontal: 20,
-      vertical: 18,
-    ),
-    decoration: BoxDecoration(
-       borderRadius: BorderRadius.circular(18),
-    ),
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
     child: Row(
       children: [
         Icon(icon, size: 28),
@@ -399,92 +447,95 @@ Widget buildTile({required BuildContext context,required IconData icon, required
         Expanded(
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
         ),
 
-        trailing ??
-            const Icon(
-              Icons.chevron_right,
-              size: 30,
-            ),
+        trailing ?? const Icon(Icons.chevron_right, size: 30),
       ],
     ),
   );
 }
 
-
 //bottom sheet
-Future<String?> showAppBottomSheet({required BuildContext context,required String title, String ?subtitle,required List<Widget> children}){
+Future<String?> showAppBottomSheet({
+  required BuildContext context,
+  required String title,
+  String? subtitle,
+  required List<Widget> children,
+}) {
   final theme = Theme.of(context);
 
   return showModalBottomSheet<String>(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      isScrollControlled: true,
-      context: context,
-      builder: (context)=>
-          SizedBox(
-            height: 200,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+    ),
+    isScrollControlled: true,
+    context: context,
+    builder: (context) => SizedBox(
+      height: 200,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildAppModalBottomSheetAppBar(context: context, title: title),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildAppModalBottomSheetAppBar(context:context,title: title),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(subtitle??"",style: theme.textTheme.titleLarge,),
-                      SizedBox(height: 8,),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: children,
-                      )
-                    ],
-                  ),
+                Text(subtitle ?? "", style: theme.textTheme.titleLarge),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: children,
                 ),
               ],
             ),
-          )
+          ),
+        ],
+      ),
+    ),
   );
 }
 
 // appbar inside bottom sheet
-AppBar buildAppModalBottomSheetAppBar({required BuildContext context,required String title}){
+AppBar buildAppModalBottomSheetAppBar({
+  required BuildContext context,
+  required String title,
+}) {
   final theme = Theme.of(context);
 
   return AppBar(
     backgroundColor: Colors.transparent,
-    elevation: 0, leading: IconButton(icon:Icon(Icons.arrow_back_ios_sharp), onPressed: () {
-
-  },),
-    title: Text(title,style:
-    theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w800,color: AppColors.primary)
-      ,),
+    elevation: 0,
+    leading: IconButton(
+      icon: Icon(Icons.arrow_back_ios_sharp),
+      onPressed: () {},
+    ),
+    title: Text(
+      title,
+      style: theme.textTheme.titleMedium!.copyWith(
+        fontWeight: FontWeight.w800,
+        color: AppColors.primary,
+      ),
+    ),
     actions: [
-      IconButton(icon: Icon(Icons.close),
-        onPressed: (){
+      IconButton(
+        icon: Icon(Icons.close),
+        onPressed: () {
           Navigator.pop(context);
         },
-      )
+      ),
     ],
   );
-
 }
 
 //selected filled button style
-ButtonStyle buildUnSelectedFilledButtonStyle(ThemeData theme,){
-  return  FilledButton.styleFrom(
+ButtonStyle buildUnSelectedFilledButtonStyle(ThemeData theme) {
+  return FilledButton.styleFrom(
     backgroundColor: theme.colorScheme.surface,
-    foregroundColor:
-    theme.colorScheme.onSurface,
+    foregroundColor: theme.colorScheme.onSurface,
     elevation: 0,
   );
 }
-

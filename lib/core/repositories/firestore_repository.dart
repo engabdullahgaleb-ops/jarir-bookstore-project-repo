@@ -5,23 +5,19 @@ import 'package:jarir_bookstore_project/core/models/brand_model.dart';
 import 'package:jarir_bookstore_project/core/models/category_model.dart';
 
 class FirestoreRepository {
+  FirestoreRepository();
 
-   FirestoreRepository();
-   Future<List<CategoryModel>> getCategories() async {
+  Future<List<CategoryModel>> getCategories() async {
     final snapshot = await FirebaseFirestore.instance
         .collection('categories')
         .get();
 
     return snapshot.docs.map((doc) {
-      return CategoryModel.fromFirestore(
-        doc.id,
-        doc.data(),
-      );
+      return CategoryModel.fromFirestore(doc.id, doc.data());
     }).toList();
   }
 
-
-   Future<List<BannerModel>> getBanners() async {
+  Future<List<BannerModel>> getBanners() async {
     final snapshot = await FirebaseFirestore.instance
         .collection('banners')
         .orderBy("order")
@@ -32,25 +28,23 @@ class FirestoreRepository {
         .toList();
   }
 
+  Future<List<AssetsModel>> getAssets() async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('assets')
+        .get();
 
-   Future<List<AssetsModel>> getAssets() async {
-     final snapshot = await FirebaseFirestore.instance
-         .collection('assets')
-         .get();
+    return snapshot.docs
+        .map((e) => AssetsModel.fromFirestore(e.data()))
+        .toList();
+  }
 
-     return snapshot.docs
-         .map((e) => AssetsModel.fromFirestore(e.data()))
-         .toList();
-   }
+  Future<List<BrandModel>> getBrands() async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('brands')
+        .get();
 
-   Future<List<BrandModel>> getBrands() async {
-     final snapshot = await FirebaseFirestore.instance
-         .collection('brands')
-         .get();
-
-     return snapshot.docs
-         .map((e) => BrandModel.fromFirestore(
-         e.data())
-     ).toList();
-   }
+    return snapshot.docs
+        .map((e) => BrandModel.fromFirestore(e.data()))
+        .toList();
+  }
 }

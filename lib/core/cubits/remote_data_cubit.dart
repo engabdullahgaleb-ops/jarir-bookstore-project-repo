@@ -23,7 +23,7 @@ final class RemoteDataLoaded extends RemoteDataState {
     required this.banners,
     required this.categories,
     required this.assets,
-    required this.brands
+    required this.brands,
   });
 }
 
@@ -33,44 +33,37 @@ final class RemoteDataError extends RemoteDataState {
   RemoteDataError(this.message);
 }
 
-
 //cubit
 class RemoteDataCubit extends Cubit<RemoteDataState> {
   final FirestoreRepository repository;
 
-  RemoteDataCubit({
-    required this.repository,
-  }) : super(RemoteDataInitial());
+  RemoteDataCubit({required this.repository}) : super(RemoteDataInitial());
 
   Future<void> loadData() async {
     emit(RemoteDataLoading());
-      await Future.wait([
-        repository.getBanners(),
-        repository.getCategories(),
-        repository.getAssets(),
-        repository.getBrands()
-      ]).then((result){
-        emit(
-          RemoteDataLoaded(
-            banners: result[0] as List<BannerModel>,
-            categories: result[1] as List<CategoryModel>,
-            assets: result[2] as List<AssetsModel>,
-            brands: result[3] as List<BrandModel>
-          ),
-        );
-      }).catchError((error){
-        if (kDebugMode) {
-          print(error);
-        }
-        emit(RemoteDataError(error.toString()));
-        throw error;
-      });
-
-
-
-
-
-
+    await Future.wait([
+          repository.getBanners(),
+          repository.getCategories(),
+          repository.getAssets(),
+          repository.getBrands(),
+        ])
+        .then((result) {
+          emit(
+            RemoteDataLoaded(
+              banners: result[0] as List<BannerModel>,
+              categories: result[1] as List<CategoryModel>,
+              assets: result[2] as List<AssetsModel>,
+              brands: result[3] as List<BrandModel>,
+            ),
+          );
+        })
+        .catchError((error) {
+          if (kDebugMode) {
+            print(error);
+          }
+          emit(RemoteDataError(error.toString()));
+          throw error;
+        });
   }
 
   Future<void> refresh() async {

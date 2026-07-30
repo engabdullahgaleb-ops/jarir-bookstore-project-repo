@@ -10,9 +10,7 @@ class StoresPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Center(
-      child: Text(l10n.storesPage,style:
-      theme.textTheme.headlineMedium
-        ,),
+      child: Text(l10n.storesPage, style: theme.textTheme.headlineMedium),
     );
   }
 }

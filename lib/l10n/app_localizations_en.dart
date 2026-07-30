@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -152,4 +151,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sendOTP => 'Send OTP';
+
+  @override
+  String get personalInformation => 'Personal information';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get mobileNumber => 'Mobile number';
+
+  @override
+  String get sendVerificationCode => 'Send verification code';
+
+  @override
+  String get emailAddress => 'Email address';
+
+  @override
+  String get emailHint => 'xyz@example.com';
+
+  @override
+  String get passwordRequirementLength =>
+      'The password must be 8 characters long';
+
+  @override
+  String get passwordRequirementUppercase =>
+      'Must have at least one uppercase letter';
+
+  @override
+  String get passwordRequirementLowercase =>
+      'Must have at least one lowercase letter';
+
+  @override
+  String get passwordRequirementNumber => 'Must have at least one number';
+
+  @override
+  String get passwordRequirementSpecial =>
+      'Must have at least one special character as @,#,&,;, etc.';
+
+  @override
+  String get confirmPassword => 'Confirm password';
+
+  @override
+  String get marketingConsent =>
+      'I\'d like to know about the latest Jarir offers, ads, and marketing communications tailored to my interests.';
+
+  @override
+  String get createAccountAgree =>
+      'By creating a new account, I agree to Jarir Bookstore ';
+
+  @override
+  String get termsAndConditions => 'Terms and Conditions';
+
+  @override
+  String get and => ' and ';
+
+  @override
+  String get buyingForCompany => 'Are you buying for a company?';
+
+  @override
+  String get createBusinessAccount => 'Create Business Account';
 }

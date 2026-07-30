@@ -8,20 +8,16 @@ import 'app_input_theme.dart';
 import 'app_text_theme.dart';
 
 class DarkTheme {
-
   static ThemeData theme = ThemeData(
-
     useMaterial3: true,
 
     fontFamily: 'SFArabic',
 
     brightness: Brightness.dark,
 
-    scaffoldBackgroundColor:
-    AppColors.darkBackground,
+    scaffoldBackgroundColor: AppColors.darkBackground,
 
     colorScheme: ColorScheme.fromSeed(
-
       seedColor: AppColors.primary,
 
       brightness: Brightness.dark,
@@ -29,9 +25,7 @@ class DarkTheme {
 
     cardColor: AppColors.darkSurface,
 
-    textTheme:
-    AppTextTheme.light.apply(
-
+    textTheme: AppTextTheme.light.apply(
       bodyColor: Colors.white,
 
       displayColor: Colors.white,
@@ -39,14 +33,11 @@ class DarkTheme {
 
     filledButtonTheme: AppFilledButtonTheme.light,
 
-    elevatedButtonTheme:
-    AppButtonTheme.light,
+    elevatedButtonTheme: AppButtonTheme.light,
 
-    inputDecorationTheme:
-    AppInputTheme.light.copyWith(
-
+    inputDecorationTheme: AppInputTheme.light.copyWith(
       fillColor: AppColors.darkSurface,
     ),
-    navigationBarTheme: AppBottomNavTheme.dark
+    navigationBarTheme: AppBottomNavTheme.dark,
   );
 }

@@ -10,19 +10,14 @@ import 'app_input_theme.dart';
 import 'app_text_theme.dart';
 
 class LightTheme {
-
-
   static ThemeData theme = ThemeData(
-
     useMaterial3: true,
 
     fontFamily: 'SFArabic',
 
-    scaffoldBackgroundColor:
-    AppColors.lightBackground,
+    scaffoldBackgroundColor: AppColors.lightBackground,
 
     colorScheme: ColorScheme.fromSeed(
-
       seedColor: AppColors.primary,
 
       brightness: Brightness.light,
@@ -32,17 +27,14 @@ class LightTheme {
 
     appBarTheme: AppAppBarTheme.light,
 
-    filledButtonTheme:AppFilledButtonTheme.light,
+    filledButtonTheme: AppFilledButtonTheme.light,
 
-    elevatedButtonTheme:
-    AppButtonTheme.light,
+    elevatedButtonTheme: AppButtonTheme.light,
 
     cardTheme: AppCardTheme.light,
 
-    inputDecorationTheme:
-    AppInputTheme.light,
+    inputDecorationTheme: AppInputTheme.light,
 
-    navigationBarTheme:
-    AppBottomNavTheme.light,
+    navigationBarTheme: AppBottomNavTheme.light,
   );
 }

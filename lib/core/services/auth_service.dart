@@ -10,11 +10,9 @@ class AuthService {
     try {
       await _googleSignIn.initialize();
 
-      final GoogleSignInAccount googleUser =
-      await _googleSignIn.authenticate();
+      final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
 
-      final GoogleSignInAuthentication googleAuth =
-          googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
 
       final credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
@@ -23,7 +21,7 @@ class AuthService {
       return await _auth.signInWithCredential(credential);
     } catch (e) {
       if (kDebugMode) {
-       print(e);
+        print(e);
       }
       return null;
     }

@@ -10,9 +10,7 @@ class CartPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Center(
-      child: Text(l10n.cartPage,style:
-        theme.textTheme.headlineMedium
-        ,),
+      child: Text(l10n.cartPage, style: theme.textTheme.headlineMedium),
     );
   }
 }

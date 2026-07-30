@@ -1,11 +1,6 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-enum LoginMethod {
-  password,
-  otp,
-}
+enum LoginMethod { password, otp }
 
 class LoginUIState {
   final LoginMethod method;
@@ -26,10 +21,11 @@ class LoginUIState {
     return LoginUIState(
       method: method ?? this.method,
       obscurePassword: obscurePassword ?? this.obscurePassword,
-      faceIDEnabled: faceIDEnabled?? this.faceIDEnabled,
+      faceIDEnabled: faceIDEnabled ?? this.faceIDEnabled,
     );
   }
 }
+
 class LoginUICubit extends Cubit<LoginUIState> {
   LoginUICubit() : super(const LoginUIState());
 
@@ -38,15 +34,10 @@ class LoginUICubit extends Cubit<LoginUIState> {
   }
 
   void togglePassword() {
-    emit(
-      state.copyWith(
-        obscurePassword: !state.obscurePassword,
-      ),
-    );
+    emit(state.copyWith(obscurePassword: !state.obscurePassword));
   }
+
   void toggleFaceID() {
-    emit(state.copyWith(
-      faceIDEnabled: !state.faceIDEnabled,
-    ));
+    emit(state.copyWith(faceIDEnabled: !state.faceIDEnabled));
   }
 }

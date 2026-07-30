@@ -385,6 +385,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send OTP'**
   String get sendOTP;
+
+  /// No description provided for @personalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal information'**
+  String get personalInformation;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInformation;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get firstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
+
+  /// No description provided for @mobileNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get mobileNumber;
+
+  /// No description provided for @sendVerificationCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Send verification code'**
+  String get sendVerificationCode;
+
+  /// No description provided for @emailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get emailAddress;
+
+  /// No description provided for @emailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'xyz@example.com'**
+  String get emailHint;
+
+  /// No description provided for @passwordRequirementLength.
+  ///
+  /// In en, this message translates to:
+  /// **'The password must be 8 characters long'**
+  String get passwordRequirementLength;
+
+  /// No description provided for @passwordRequirementUppercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Must have at least one uppercase letter'**
+  String get passwordRequirementUppercase;
+
+  /// No description provided for @passwordRequirementLowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Must have at least one lowercase letter'**
+  String get passwordRequirementLowercase;
+
+  /// No description provided for @passwordRequirementNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Must have at least one number'**
+  String get passwordRequirementNumber;
+
+  /// No description provided for @passwordRequirementSpecial.
+  ///
+  /// In en, this message translates to:
+  /// **'Must have at least one special character as @,#,&,;, etc.'**
+  String get passwordRequirementSpecial;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirmPassword;
+
+  /// No description provided for @marketingConsent.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'d like to know about the latest Jarir offers, ads, and marketing communications tailored to my interests.'**
+  String get marketingConsent;
+
+  /// No description provided for @createAccountAgree.
+  ///
+  /// In en, this message translates to:
+  /// **'By creating a new account, I agree to Jarir Bookstore '**
+  String get createAccountAgree;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and Conditions'**
+  String get termsAndConditions;
+
+  /// No description provided for @and.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get and;
+
+  /// No description provided for @buyingForCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you buying for a company?'**
+  String get buyingForCompany;
+
+  /// No description provided for @createBusinessAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Business Account'**
+  String get createBusinessAccount;
 }
 
 class _AppLocalizationsDelegate

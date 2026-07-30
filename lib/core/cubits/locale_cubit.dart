@@ -3,24 +3,22 @@ import 'package:flutter/material.dart';
 
 import '../../shared/helpers/locale_helper.dart';
 
+class LocaleCubit extends Cubit<Locale> {
+  LocaleCubit(super.def);
 
-class LocaleCubit extends Cubit<Locale>{
+  void changeLocale(Locale locale) {
+    LocaleHelper.saveCurrentLocale(locale)
+        .then((value) {
+          emit(locale);
+        })
+        .catchError((error) {});
+  }
 
-    LocaleCubit(super.def);
+  bool isArabic() {
+    return state.languageCode == SupportedLocaleCodes.ar.name;
+  }
 
-    void changeLocale(Locale locale){
-        LocaleHelper.saveCurrentLocale(locale).then((value){
-            emit(locale);
-        }).catchError((error){
-
-        });
-    }
-
-    bool isArabic(){
-        return state.languageCode == SupportedLocaleCodes.ar.name;
-    }
-
-    bool isEnglish(){
-        return state.languageCode == SupportedLocaleCodes.en.name;
-    }
+  bool isEnglish() {
+    return state.languageCode == SupportedLocaleCodes.en.name;
+  }
 }
