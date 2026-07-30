@@ -216,4 +216,50 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get createBusinessAccount => 'إنشاء حساب أعمال';
+
+  @override
+  String get requiredField => 'هذا الحقل مطلوب.';
+
+  @override
+  String get invalidEmail => 'يرجى إدخال بريد إلكتروني صحيح.';
+
+  @override
+  String get invalidPhone => 'يرجى إدخال رقم جوال صحيح.';
+
+  @override
+  String get invalidPassword => 'كلمة المرور لا تستوفي المتطلبات.';
+
+  @override
+  String get passwordTooShort => 'يجب ألا تقل كلمة المرور عن 8 أحرف.';
+
+  @override
+  String get passwordUppercase =>
+      'يجب أن تحتوي كلمة المرور على حرف إنجليزي كبير واحد على الأقل.';
+
+  @override
+  String get passwordLowercase =>
+      'يجب أن تحتوي كلمة المرور على حرف إنجليزي صغير واحد على الأقل.';
+
+  @override
+  String get passwordNumber =>
+      'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل.';
+
+  @override
+  String get passwordSpecialCharacter =>
+      'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل.';
+
+  @override
+  String get passwordNotMatch => 'كلمتا المرور غير متطابقتين.';
+
+  @override
+  String get invalidFirstName => 'يرجى إدخال اسم أول صحيح.';
+
+  @override
+  String get invalidLastName => 'يرجى إدخال اسم عائلة صحيح.';
+
+  @override
+  String get acceptTerms => 'يجب الموافقة على الشروط والأحكام.';
+
+  @override
+  String get invalidOTP => 'يرجى إدخال رمز تحقق صحيح.';
 }

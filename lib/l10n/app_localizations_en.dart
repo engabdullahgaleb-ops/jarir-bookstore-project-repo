@@ -217,4 +217,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get createBusinessAccount => 'Create Business Account';
+
+  @override
+  String get requiredField => 'This field is required.';
+
+  @override
+  String get invalidEmail => 'Please enter a valid email address.';
+
+  @override
+  String get invalidPhone => 'Please enter a valid mobile number.';
+
+  @override
+  String get invalidPassword => 'Password does not meet the required criteria.';
+
+  @override
+  String get passwordTooShort => 'Password must be at least 8 characters.';
+
+  @override
+  String get passwordUppercase =>
+      'Password must contain at least one uppercase letter.';
+
+  @override
+  String get passwordLowercase =>
+      'Password must contain at least one lowercase letter.';
+
+  @override
+  String get passwordNumber => 'Password must contain at least one number.';
+
+  @override
+  String get passwordSpecialCharacter =>
+      'Password must contain at least one special character.';
+
+  @override
+  String get passwordNotMatch => 'Passwords do not match.';
+
+  @override
+  String get invalidFirstName => 'Please enter a valid first name.';
+
+  @override
+  String get invalidLastName => 'Please enter a valid last name.';
+
+  @override
+  String get acceptTerms => 'You must accept the Terms and Conditions.';
+
+  @override
+  String get invalidOTP => 'Please enter a valid verification code.';
 }

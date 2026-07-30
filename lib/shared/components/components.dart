@@ -46,6 +46,8 @@ Widget iconTitleButton({
 }
 
 Widget inputField({
+  String ? errorText,
+  validator,
   TextEditingController? controller,
   TextInputType? type,
   Widget? prefix,
@@ -53,8 +55,11 @@ Widget inputField({
   String? hint,
   TextStyle? style,
   bool obSecureText = false,
+  onChanged,
 }) {
   return TextFormField(
+    validator: validator,
+    onChanged: onChanged,
     obscureText: obSecureText,
     style: style,
     controller: controller,
@@ -63,6 +68,7 @@ Widget inputField({
       suffixIcon: suffix,
       prefixIcon: prefix,
       hint: Text(hint ?? ''),
+      errorText: errorText
     ),
   );
 }
@@ -359,8 +365,8 @@ Widget buildGridView(
     itemCount: items.length,
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: crossAxisCount,
-      crossAxisSpacing: 16,
-      mainAxisSpacing: 16,
+      crossAxisSpacing: 5,
+      mainAxisSpacing: 5,
       childAspectRatio: 1 / 1.3,
     ),
     itemBuilder: (context, index) {

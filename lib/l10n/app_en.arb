@@ -66,5 +66,20 @@
   "termsAndConditions": "Terms and Conditions",
   "and": " and ",
   "buyingForCompany": "Are you buying for a company?",
-  "createBusinessAccount": "Create Business Account"
+  "createBusinessAccount": "Create Business Account",
+  "requiredField": "This field is required.",
+  "invalidEmail": "Please enter a valid email address.",
+  "invalidPhone": "Please enter a valid mobile number.",
+  "invalidPassword": "Password does not meet the required criteria.",
+  "passwordTooShort": "Password must be at least 8 characters.",
+  "passwordUppercase": "Password must contain at least one uppercase letter.",
+  "passwordLowercase": "Password must contain at least one lowercase letter.",
+  "passwordNumber": "Password must contain at least one number.",
+  "passwordSpecialCharacter": "Password must contain at least one special character.",
+  "passwordNotMatch": "Passwords do not match.",
+  "invalidFirstName": "Please enter a valid first name.",
+  "invalidLastName": "Please enter a valid last name.",
+  "acceptTerms": "You must accept the Terms and Conditions.",
+  "invalidOTP": "Please enter a valid verification code."
+
 }

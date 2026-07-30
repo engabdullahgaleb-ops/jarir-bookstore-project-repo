@@ -505,6 +505,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create Business Account'**
   String get createBusinessAccount;
+
+  /// No description provided for @requiredField.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required.'**
+  String get requiredField;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address.'**
+  String get invalidEmail;
+
+  /// No description provided for @invalidPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid mobile number.'**
+  String get invalidPhone;
+
+  /// No description provided for @invalidPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password does not meet the required criteria.'**
+  String get invalidPassword;
+
+  /// No description provided for @passwordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters.'**
+  String get passwordTooShort;
+
+  /// No description provided for @passwordUppercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one uppercase letter.'**
+  String get passwordUppercase;
+
+  /// No description provided for @passwordLowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one lowercase letter.'**
+  String get passwordLowercase;
+
+  /// No description provided for @passwordNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one number.'**
+  String get passwordNumber;
+
+  /// No description provided for @passwordSpecialCharacter.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one special character.'**
+  String get passwordSpecialCharacter;
+
+  /// No description provided for @passwordNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get passwordNotMatch;
+
+  /// No description provided for @invalidFirstName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid first name.'**
+  String get invalidFirstName;
+
+  /// No description provided for @invalidLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid last name.'**
+  String get invalidLastName;
+
+  /// No description provided for @acceptTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'You must accept the Terms and Conditions.'**
+  String get acceptTerms;
+
+  /// No description provided for @invalidOTP.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid verification code.'**
+  String get invalidOTP;
 }
 
 class _AppLocalizationsDelegate

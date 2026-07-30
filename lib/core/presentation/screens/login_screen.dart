@@ -2,8 +2,10 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jarir_bookstore_project/core/cubits/login_ui_cubit.dart';
+import 'package:jarir_bookstore_project/core/presentation/screens/register_screen.dart';
 import 'package:jarir_bookstore_project/l10n/app_localizations.dart';
 import 'package:jarir_bookstore_project/shared/components/components.dart';
+import 'package:jarir_bookstore_project/shared/helpers/helpers.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -185,7 +187,9 @@ class LoginScreen extends StatelessWidget {
 
                   Center(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateTo(from: context, to: RegisterScreen());
+                      },
                       child: Text(l10n.register),
                     ),
                   ),
